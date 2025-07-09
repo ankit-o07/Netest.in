@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (mobileMenuToggle && mainNav) {
         mobileMenuToggle.addEventListener('click', (e) => {
             e.stopPropagation();
+            e.preventDefault();
             mainNav.classList.toggle('active');
             const isExpanded = mainNav.classList.contains('active');
             mobileMenuToggle.setAttribute('aria-expanded', isExpanded);
@@ -45,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Close mobile menu when clicking outside
     document.addEventListener('click', (e) => {
-        if (mainNav && !e.target.closest('.header-container') && mainNav.classList.contains('active')) {
+        if (mainNav && mainNav.classList.contains('active') && !e.target.closest('.header-container')) {
             mainNav.classList.remove('active');
             if (mobileMenuToggle) {
                 mobileMenuToggle.setAttribute('aria-expanded', false);
@@ -55,6 +56,15 @@ document.addEventListener('DOMContentLoaded', function() {
                     icon.classList.add('fa-bars');
                 }
             }
+            
+            // Reset dropdown states when closing mobile menu
+            document.querySelectorAll('.dropdown').forEach(dropdown => {
+                dropdown.classList.remove('active');
+                const content = dropdown.querySelector('.dropdown-content');
+                if (content) {
+                    content.style.display = 'none';
+                }
+            });
         }
     });
 
@@ -64,6 +74,7 @@ document.addEventListener('DOMContentLoaded', function() {
         dropdown.addEventListener('click', function(e) {
             if (window.innerWidth <= 768) {
                 e.preventDefault();
+                e.stopPropagation();
                 const parentDropdown = this.closest('.dropdown');
                 const dropdownContent = parentDropdown.querySelector('.dropdown-content');
 
@@ -115,9 +126,29 @@ document.addEventListener('DOMContentLoaded', function() {
     
     navLinks.forEach(link => {
         const href = link.getAttribute('href');
-        if (href === currentPath || 
+        // Remove existing active classes first
+        link.classList.remove('active');
+        
+        // Add active class based on current path
+        if (href && (href === currentPath || 
             (currentPath === '/' && href === '/index.html') ||
-            (currentPath === '/index.html' && href === '/')) {
+            (currentPath === '/index.html' && href === '/') ||
+            (currentPath.includes('/blogs') && href === '/blogs.html') ||
+            (currentPath.includes('/tests') && href === '/tests.html') ||
+            (currentPath.includes('/labs') && href.includes('Labs')) ||
+            (currentPath.includes('/ascalc') && href === '/ascalc.html') ||
+            (currentPath.includes('/ip_address') && href === '/ip_address.html'))) {
+            link.classList.add('active');
+        }
+    });
+    
+    // Also handle dropdown links
+    const dropdownLinks = document.querySelectorAll('.dropdown-link');
+    dropdownLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        link.classList.remove('active');
+        
+        if (href && href === currentPath) {
             link.classList.add('active');
         }
     });
