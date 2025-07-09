@@ -1,0 +1,94 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RIP Configuration - Networking Essentials</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <a href="/" class="logo">Networking Essentials</a>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="/index.html" class="nav-link">Home</a></li>
+                    <li><a href="/blogs.html" class="nav-link">Blogs</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link">Tools</a>
+                        <div class="dropdown-content">
+                            <a href="/tests.html" class="dropdown-link">Tests</a>
+                            <a href="/ascalc.html" class="dropdown-link">AS Calculator</a>
+                            <a href="/ip_address.html" class="dropdown-link">IP Calculator</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link active">Labs</a>
+                        <div class="dropdown-content">
+                            <a href="/labs/eigrp.html" class="dropdown-link">EIGRP</a>
+                            <a href="/labs/ospf.html" class="dropdown-link">OSPF</a>
+                            <a href="/labs/rip.html" class="dropdown-link">RIP</a>
+                            <a href="/labs/bgp.html" class="dropdown-link">BGP</a>
+                        </div>
+                    </li>
+                </ul>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="content-section fade-in">
+            <h1>RIP Configuration</h1>
+            <div class="content-card">
+                <p>Configuring RIP involves enabling the protocol on the router and specifying the networks to be advertised. Here's a basic guide:</p>
+                <h3>Basic RIP Configuration (RIPv2):</h3>
+                <pre><code>Router(config)# router rip
+Router(config-router)# version 2
+Router(config-router)# network &lt;network-address&gt;
+Router(config-router)# no auto-summary</code></pre>
+                <ul>
+                    <li><code>router rip</code>: Enables the RIP routing process.</li>
+                    <li><code>version 2</code>: Specifies RIP version 2, which supports VLSM and sends multicast updates. For RIPv1, use <code>version 1</code>.</li>
+                    <li><code>network &lt;network-address&gt;</code>: Advertises directly connected classful networks.</li>
+                    <li><code>no auto-summary</code>: Disables automatic summarization of routes at classful network boundaries. This is highly recommended for RIPv2 to ensure proper routing in discontiguous networks.</li>
+                </ul>
+
+                <h3>Passive Interface:</h3>
+                <p>To prevent RIP from sending updates out of an interface, but still advertise the network connected to it:</p>
+                <pre><code>Router(config-router)# passive-interface &lt;interface-type&gt; &lt;interface-number&gt;</code></pre>
+
+                <h3>RIP Authentication:</h3>
+                <p>To secure RIP updates, authentication can be configured:</p>
+                <pre><code>Router(config)# key chain &lt;key-chain-name&gt;
+Router(config-keychain)# key 1
+Router(config-keychain-key)# key-string &lt;password&gt;
+Router(config-keychain-key)# exit
+Router(config-if)# ip rip authentication mode md5
+Router(config-if)# ip rip authentication key-chain &lt;key-chain-name&gt;</code></pre>
+
+                <h3>Verifying RIP:</h3>
+                <p>Useful commands to verify RIP operation:</p>
+                <ul>
+                    <li><code>show ip protocols</code>: Displays information about active routing protocols, including RIP.</li>
+                    <li><code>show ip route rip</code>: Shows RIP routes in the routing table.</li>
+                    <li><code>show ip rip database</code>: Displays the RIP routing database.</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Networking Essentials. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../../theme.js"></script>
+</body>
+</html>

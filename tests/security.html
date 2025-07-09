@@ -1,0 +1,259 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Network Security Test - Networking Hub</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <a href="/" class="logo">Networking Essentials</a>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="/index.html" class="nav-link">Home</a></li>
+                    <li><a href="/blogs.html" class="nav-link">Blogs</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link active">Tools</a>
+                        <div class="dropdown-content">
+                            <a href="/tests.html" class="dropdown-link">Tests</a>
+                            <a href="/ascalc.html" class="dropdown-link">AS Calculator</a>
+                            <a href="/ip_address.html" class="dropdown-link">IP Calculator</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link">Labs</a>
+                        <div class="dropdown-content">
+                            <a href="/labs/eigrp.html" class="dropdown-link">EIGRP</a>
+                            <a href="/labs/ospf.html" class="dropdown-link">OSPF</a>
+                            <a href="/labs/rip.html" class="dropdown-link">RIP</a>
+                            <a href="/labs/bgp.html" class="dropdown-link">BGP</a>
+                        </div>
+                    </li>
+                </ul>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="welcome-section fade-in">
+            <h1>Network Security Test</h1>
+            <p>This test assesses your understanding of network security principles and practices.</p>
+        </section>
+
+        <section class="content-section fade-in">
+            <div id="quiz-container">
+                <div id="question-display">
+                    <h2 id="question-text"></h2>
+                    <div id="options-container"></div>
+                </div>
+                <button id="next-button">Next Question</button>
+            </div>
+            <div id="score-card" style="display:none;">
+                <h2>Quiz Complete!</h2>
+                <p>Your score: <span id="score"></span> / <span id="total-questions"></span></p>
+                <button id="restart-button">Restart Quiz</button>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Networking Essentials. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../theme.js"></script>
+    <script>
+        const questions = [
+            {
+                question: "What is the primary purpose of a firewall?",
+                options: ["To speed up network traffic", "To prevent unauthorized access to a network", "To translate IP addresses", "To manage network cables"],
+                answer: "To prevent unauthorized access to a network"
+            },
+            {
+                question: "What does VPN stand for?",
+                options: ["Virtual Private Network", "Very Personal Network", "Virtual Public Network", "Verified Private Node"],
+                answer: "Virtual Private Network"
+            },
+            {
+                question: "Which of the following is a common method for securing wireless networks?",
+                options: ["WEP", "WPA2", "Telnet", "FTP"],
+                answer: "WPA2"
+            },
+            {
+                question: "What is the purpose of an Intrusion Detection System (IDS)?",
+                options: ["To prevent network attacks", "To detect malicious activity on a network", "To encrypt data", "To manage user authentication"],
+                answer: "To detect malicious activity on a network"
+            },
+            {
+                question: "Which type of attack involves an attacker attempting to guess a user's password by trying many combinations?",
+                options: ["Phishing", "DDoS", "Brute-force", "Man-in-the-Middle"],
+                answer: "Brute-force"
+            },
+            {
+                question: "What is encryption?",
+                options: ["The process of converting data into a code to prevent unauthorized access", "The process of converting data into a readable format", "The process of compressing data", "The process of transmitting data over a network"],
+                answer: "The process of converting data into a code to prevent unauthorized access"
+            },
+            {
+                question: "Which protocol is commonly used for secure remote access to network devices?",
+                options: ["Telnet", "SSH", "HTTP", "FTP"],
+                answer: "SSH"
+            },
+            {
+                question: "What is a Denial of Service (DoS) attack?",
+                options: ["An attack that attempts to steal user credentials", "An attack that floods a system with traffic to make it unavailable", "An attack that injects malicious code into a website", "An attack that modifies data on a server"],
+                answer: "An attack that floods a system with traffic to make it unavailable"
+            },
+            {
+                question: "What is the purpose of a Digital Certificate?",
+                options: ["To encrypt data", "To verify the identity of a website or user", "To store passwords", "To manage network configurations"],
+                answer: "To verify the identity of a website or user"
+            },
+            {
+                question: "Which of the following is a best practice for password security?",
+                options: ["Using easily guessable passwords", "Reusing passwords across multiple accounts", "Using long, complex, and unique passwords", "Writing down passwords in plain text"],
+                answer: "Using long, complex, and unique passwords"
+            },
+            {
+                question: "What is phishing?",
+                options: ["An attempt to trick individuals into revealing sensitive information", "A type of malware that encrypts files", "A method for bypassing firewalls", "A technique for optimizing network performance"],
+                answer: "An attempt to trick individuals into revealing sensitive information"
+            },
+            {
+                question: "Which security measure helps protect against ARP spoofing?",
+                options: ["DHCP Snooping", "Port Security", "Dynamic ARP Inspection (DAI)", "VLANs"],
+                answer: "Dynamic ARP Inspection (DAI)"
+            },
+            {
+                question: "What is the role of a Security Information and Event Management (SIEM) system?",
+                options: ["To prevent all cyber attacks", "To collect and analyze security logs and events", "To manage network devices", "To provide physical security"],
+                answer: "To collect and analyze security logs and events"
+            },
+            {
+                question: "Which of the following is a common vulnerability in web applications?",
+                options: ["SQL Injection", "DNS Spoofing", "MAC Flooding", "STP Loop"],
+                answer: "SQL Injection"
+            },
+            {
+                question: "What is multi-factor authentication (MFA)?",
+                options: ["Using a single password for multiple accounts", "Using two or more different authentication factors to verify identity", "Using biometric data for authentication", "Using a hardware token for authentication"],
+                answer: "Using two or more different authentication factors to verify identity"
+            },
+            {
+                question: "Which type of malware replicates itself and spreads to other computers?",
+                options: ["Trojan Horse", "Rootkit", "Virus", "Spyware"],
+                answer: "Virus"
+            },
+            {
+                question: "What is the purpose of a Demilitarized Zone (DMZ)?",
+                options: ["To provide a secure area for internal servers", "To isolate public-facing servers from the internal network", "To store sensitive user data", "To manage network traffic"],
+                answer: "To isolate public-facing servers from the internal network"
+            },
+            {
+                question: "Which of the following is a common security protocol for email?",
+                options: ["SMTP", "POP3", "IMAP", "S/MIME"],
+                answer: "S/MIME"
+            },
+            {
+                question: "What is a honeypot?",
+                options: ["A system designed to attract and trap cyber attackers", "A type of encryption algorithm", "A tool for network monitoring", "A method for secure data storage"],
+                answer: "A system designed to attract and trap cyber attackers"
+            },
+            {
+                question: "Which security principle states that users should only have access to the resources necessary for their job functions?",
+                options: ["Least Privilege", "Separation of Duties", "Defense in Depth", "Confidentiality"],
+                answer: "Least Privilege"
+            }
+        ];
+
+        let selectedQuestions = [];
+        let currentQuestionIndex = 0;
+        let score = 0;
+
+        const quizContainer = document.getElementById('quiz-container');
+        const questionText = document.getElementById('question-text');
+        const optionsContainer = document.getElementById('options-container');
+        const nextButton = document.getElementById('next-button');
+        const scoreCard = document.getElementById('score-card');
+        const scoreDisplay = document.getElementById('score');
+        const totalQuestionsDisplay = document.getElementById('total-questions');
+        const restartButton = document.getElementById('restart-button');
+
+        function selectRandomQuestions() {
+            const shuffled = [...questions].sort(() => 0.5 - Math.random());
+            selectedQuestions = shuffled.slice(0, 10); // Select 10 random questions
+        }
+
+        function displayQuestion() {
+            if (currentQuestionIndex < selectedQuestions.length) {
+                const q = selectedQuestions[currentQuestionIndex];
+                questionText.textContent = `Question ${currentQuestionIndex + 1}: ${q.question}`;
+                optionsContainer.innerHTML = '';
+                q.options.forEach(option => {
+                    const button = document.createElement('button');
+                    button.textContent = option;
+                    button.classList.add('option-button');
+                    button.onclick = () => selectOption(option, q.answer);
+                    optionsContainer.appendChild(button);
+                });
+                nextButton.style.display = 'none'; // Hide next button until an option is selected
+            } else {
+                showScore();
+            }
+        }
+
+        function selectOption(selectedOption, correctAnswer) {
+            const optionButtons = optionsContainer.querySelectorAll('.option-button');
+            optionButtons.forEach(button => {
+                button.disabled = true; // Disable all options after selection
+                if (button.textContent === correctAnswer) {
+                    button.classList.add('correct');
+                } else if (button.textContent === selectedOption) {
+                    button.classList.add('incorrect');
+                }
+            });
+
+            if (selectedOption === correctAnswer) {
+                score++;
+            }
+            nextButton.style.display = 'block'; // Show next button
+        }
+
+        function showScore() {
+            quizContainer.style.display = 'none';
+            scoreCard.style.display = 'block';
+            scoreDisplay.textContent = score;
+            totalQuestionsDisplay.textContent = selectedQuestions.length;
+        }
+
+        function restartQuiz() {
+            currentQuestionIndex = 0;
+            score = 0;
+            selectRandomQuestions();
+            quizContainer.style.display = 'block';
+            scoreCard.style.display = 'none';
+            displayQuestion();
+        }
+
+        nextButton.onclick = () => {
+            currentQuestionIndex++;
+            displayQuestion();
+        };
+
+        restartButton.onclick = restartQuiz;
+
+        // Initialize quiz
+        selectRandomQuestions();
+        displayQuestion();
+    </script>
+</body>
+</html>

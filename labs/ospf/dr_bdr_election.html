@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSPF DR/BDR Election - Networking Essentials</title>
+    <meta name="description" content="Understanding Designated Router (DR) and Backup Designated Router (BDR) election in OSPF.">
+    <meta name="keywords" content="OSPF DR, OSPF BDR, DR/BDR election, OSPF priority">
+    <meta name="author" content="Networking Essentials">
+    <meta name="robots" content="index, follow">
+    <link rel="stylesheet" href="../../styles.css">
+    <script defer src="../../theme.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <a href="/" class="logo">Networking Essentials</a>
+            <button class="mobile-menu-toggle" aria-label="Open navigation menu" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="/index.html" class="nav-link">Home</a></li>
+                    <li><a href="/blogs.html" class="nav-link">Blogs</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link dropdown-toggle">Tools</a>
+                        <ul class="dropdown-content">
+                            <li><a href="/tests.html" class="dropdown-link">Tests</a></li>
+                            <li><a href="/ascalc.html" class="dropdown-link">AS Calculator</a></li>
+                            <li><a href="/ip_address.html" class="dropdown-link">IP Calculator</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link dropdown-toggle">Labs</a>
+                        <ul class="dropdown-content">
+                            <li><a href="/labs/eigrp.html" class="dropdown-link">EIGRP</a></li>
+                            <li><a href="/labs/ospf.html" class="dropdown-link active">OSPF</a></li>
+                            <li><a href="/labs/rip.html" class="dropdown-link">RIP</a></li>
+                            <li><a href="/labs/bgp.html" class="dropdown-link">BGP</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="welcome-section fade-in">
+            <h1>OSPF DR/BDR Election</h1>
+            <p>On multi-access network segments (e.g., Ethernet), OSPF elects a Designated Router (DR) and a Backup Designated Router (BDR) to reduce the number of adjacencies and the amount of routing traffic.</p>
+        </section>
+        <section class="content-section fade-in">
+            <div class="content-card">
+                <h3>Election Process:</h3>
+                <ol>
+                    <li><strong>Highest OSPF Priority:</strong> Router with the highest OSPF priority (0-255) becomes DR. If tied, then highest Router ID wins.</li>
+                    <li><strong>Highest Router ID:</strong> If priorities are equal, the router with the highest Router ID becomes DR.</li>
+                    <li><strong>Non-Preemptive:</strong> Once a DR/BDR is elected, it remains DR/BDR unless it fails or is manually reset.</li>
+                </ol>
+                <h3>Configuration:</h3>
+                <pre><code>interface GigabitEthernet0/0
+ ip ospf priority [0-255]</code></pre>
+                <ul>
+                    <li>Priority 0 means the router will never become DR or BDR.</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">&copy; 2025 Networking Essentials. All rights reserved.</div>
+    </footer>
+</body>
+</html>

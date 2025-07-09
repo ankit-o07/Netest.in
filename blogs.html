@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore Networking Essentials' networking blog posts. Find tutorials on subnetting, iPerf, router configuration, and more for IT professionals and CCNA/CCNP students.">
+    <meta name="keywords" content="networking tutorials, subnetting, iPerf, router configuration, CCNA, CCNP, network testing">
+    <meta name="author" content="Networking Essentials">
+    <title>Networking Blog | Networking Essentials</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="theme.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <a href="/" class="logo">Networking Essentials</a>
+            <button class="mobile-menu-toggle" aria-label="Open navigation menu" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="/index.html" class="nav-link">Home</a></li>
+                    <li><a href="/blogs.html" class="nav-link active">Blogs</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link dropdown-toggle">Tools</a>
+                        <ul class="dropdown-content">
+                            <li><a href="/tests.html" class="dropdown-link">Tests</a></li>
+                            <li><a href="/ascalc.html" class="dropdown-link">AS Calculator</a></li>
+                            <li><a href="/ip_address.html" class="dropdown-link">IP Calculator</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link dropdown-toggle">Labs</a>
+                        <ul class="dropdown-content">
+                            <li><a href="/labs/eigrp.html" class="dropdown-link">EIGRP</a></li>
+                            <li><a href="/labs/ospf.html" class="dropdown-link">OSPF</a></li>
+                            <li><a href="/labs/rip.html" class="dropdown-link">RIP</a></li>
+                            <li><a href="/labs/bgp.html" class="dropdown-link">BGP</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="welcome-section">
+            <h1>Networking Blog</h1>
+            <p>Welcome to the Networking Essentials Blog! Discover expert tutorials, guides, and tips on networking topics like subnetting, network testing, and router configuration. Perfect for IT professionals, network engineers, and CCNA/CCNP students.</p>
+        </section>
+        <section class="menu-grid">
+            <div class="menu-item">
+                <h3><a href="/blogs/subnetting_guide.html">Understanding Subnetting in 5 Easy Steps</a></h3>
+                <p>Learn how to divide networks into smaller subnets with this beginner-friendly guide. Master IP addressing and subnet masks.</p>
+                <p class="post-meta"><i class="far fa-calendar-alt"></i> June 2, 2025</p>
+            </div>
+            <div class="menu-item">
+                <h3><a href="/blogs/ios_commands.html">Top 10 Cisco IOS Commands Every Network Engineer Must Know</a></h3>
+                <p>Ready to take control of Cisco routers and switches? Whether you're studying for your CCNA, tackling the CCNP ENARSI exam, or managing a live network</p>
+                <p class="post-meta"><i class="far fa-calendar-alt"></i> June 6, 2025</p>
+            </div>
+            <div class="menu-item">
+                <h3><a href="/blogs/router_configuration.html">Router Configuration Basics</a></h3>
+                <p>Get started with configuring Cisco routers for small networks with practical CLI commands and examples.</p>
+                <p class="post-meta"><i class="far fa-calendar-alt"></i> May 15, 2025</p>
+            </div>
+            <div class="menu-item">
+                <h3><a href="/blogs/packet-tracer-guide.html">Real-World Use Cases of Packet Tracer and GNS3</a></h3>
+                <p>Explore how to use Packet Tracer and GNS3 for network simulation and training in this detailed guide.</p>
+                <p class="post-meta"><i class="far fa-calendar-alt"></i> May 1, 2025</p>
+            </div>
+            <div class="menu-item">
+                <h3><a href="/blogs/ipvsmac.html">IP Address vs MAC Address: What's the Difference?</a></h3>
+                <p>IP address helps identify your device on a network logically, while MAC address is a physical hardware ID unique to your network interface.</p>
+                <p class="post-meta"><i class="far fa-calendar-alt"></i> April 20, 2025</p>
+            </div>
+        </section>
+        <div style="text-align:center; margin-top:2rem;">
+            <button class="btn-primary">Load More Posts</button>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">&copy; 2025 Networking Essentials. All rights reserved.</div>
+    </footer>
+</body>
+</html>

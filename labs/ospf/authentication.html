@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSPF Authentication - Networking Essentials</title>
+    <meta name="description" content="Configuring OSPF authentication for secure routing.">
+    <meta name="keywords" content="OSPF authentication, MD5 authentication, plain text authentication, area authentication">
+    <meta name="author" content="Networking Essentials">
+    <meta name="robots" content="index, follow">
+    <link rel="stylesheet" href="../../styles.css">
+    <script defer src="../../theme.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <a href="/" class="logo">Networking Essentials</a>
+            <button class="mobile-menu-toggle" aria-label="Open navigation menu" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="/index.html" class="nav-link">Home</a></li>
+                    <li><a href="/blogs.html" class="nav-link">Blogs</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link dropdown-toggle">Tools</a>
+                        <ul class="dropdown-content">
+                            <li><a href="/tests.html" class="dropdown-link">Tests</a></li>
+                            <li><a href="/ascalc.html" class="dropdown-link">AS Calculator</a></li>
+                            <li><a href="/ip_address.html" class="dropdown-link">IP Calculator</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link dropdown-toggle">Labs</a>
+                        <ul class="dropdown-content">
+                            <li><a href="/labs/eigrp.html" class="dropdown-link">EIGRP</a></li>
+                            <li><a href="/labs/ospf.html" class="dropdown-link active">OSPF</a></li>
+                            <li><a href="/labs/rip.html" class="dropdown-link">RIP</a></li>
+                            <li><a href="/labs/bgp.html" class="dropdown-link">BGP</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="welcome-section fade-in">
+            <h1>OSPF Authentication</h1>
+            <p>OSPF authentication ensures that only trusted routers can exchange routing information, preventing unauthorized updates and improving network security.</p>
+        </section>
+        <section class="content-section fade-in">
+            <div class="content-card">
+                <h3>Authentication Types:</h3>
+                <ul>
+                    <li><strong>Plain Text Authentication:</strong> Simple but insecure, as passwords are sent in clear text.</li>
+                    <li><strong>MD5 Authentication:</strong> More secure, using MD5 hashes for authentication. Recommended over plain text.</li>
+                </ul>
+                <h3>Configuration Example (MD5):</h3>
+                <pre><code>interface GigabitEthernet0/0
+ ip ospf authentication message-digest
+ ip ospf message-digest-key 1 md5 cisco
+router ospf 1
+ area 0 authentication message-digest</code></pre>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">&copy; 2025 Networking Essentials. All rights reserved.</div>
+    </footer>
+</body>
+</html>

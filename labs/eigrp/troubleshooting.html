@@ -1,0 +1,78 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EIGRP Troubleshooting - Networking Essentials</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <a href="/" class="logo">Networking Essentials</a>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="/index.html" class="nav-link">Home</a></li>
+                    <li><a href="/blogs.html" class="nav-link">Blogs</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link">Tools</a>
+                        <div class="dropdown-content">
+                            <a href="/tests.html" class="dropdown-link">Tests</a>
+                            <a href="/ascalc.html" class="dropdown-link">AS Calculator</a>
+                            <a href="/ip_address.html" class="dropdown-link">IP Calculator</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link active">Labs</a>
+                        <div class="dropdown-content">
+                            <a href="/labs/eigrp.html" class="dropdown-link">EIGRP</a>
+                            <a href="/labs/ospf.html" class="dropdown-link">OSPF</a>
+                            <a href="/labs/rip.html" class="dropdown-link">RIP</a>
+                            <a href="/labs/bgp.html" class="dropdown-link">BGP</a>
+                        </div>
+                    </li>
+                </ul>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="content-section fade-in">
+            <h1>EIGRP Troubleshooting</h1>
+            <div class="content-card">
+                <p>Troubleshooting EIGRP issues often involves verifying neighbor relationships, checking routing tables, and examining interface configurations. Here are some common issues and troubleshooting steps:</p>
+                <h3>Common EIGRP Issues:</h3>
+                <ul>
+                    <li><strong>Neighbor Adjacency Issues:</strong> EIGRP neighbors may not form an adjacency due to mismatched AS numbers, authentication issues, K-value mismatches, or ACLs blocking EIGRP packets.</li>
+                    <li><strong>Missing Routes:</strong> Routes may not be advertised or learned due to incorrect network statements, passive interfaces, or summarization issues.</li>
+                    <li><strong>Stuck in Active (SIA):</strong> A router may get stuck in active state if it sends a query and does not receive a reply from a neighbor within a certain time. This can indicate a problem with the neighbor or a link failure.</li>
+                </ul>
+                <h3>Troubleshooting Steps:</h3>
+                <ol>
+                    <li><strong>Verify EIGRP Neighbors:</strong> Use <code>show ip eigrp neighbors</code> to check if neighbors are established. Look for the correct AS number and hold time.</li>
+                    <li><strong>Check EIGRP Interfaces:</strong> Use <code>show ip eigrp interfaces detail</code> to verify that EIGRP is enabled on the correct interfaces and that there are no passive interface issues.</li>
+                    <li><strong>Examine EIGRP Topology Table:</strong> Use <code>show ip eigrp topology</code> to see learned routes, feasible successors, and reported distances.</li>
+                    <li><strong>Check Routing Table:</strong> Use <code>show ip route eigrp</code> to confirm that EIGRP routes are being installed in the routing table.</li>
+                    <li><strong>Debug EIGRP Packets:</strong> Use <code>debug eigrp packets</code> (use with caution in production) to see EIGRP packets being sent and received, which can help identify communication issues.</li>
+                    <li><strong>Verify K-values:</strong> Ensure K-values are consistent across all EIGRP routers in the same AS. Use <code>show ip protocols</code>.</li>
+                    <li><strong>Check Authentication:</strong> If authentication is configured, verify that key chains and authentication modes match on neighboring routers.</li>
+                </ol>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Networking Essentials. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../../theme.js"></script>
+</body>
+</html>

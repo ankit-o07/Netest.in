@@ -1,0 +1,259 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Routing Protocol Test - Networking Hub</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <a href="/" class="logo">Networking Essentials</a>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="/index.html" class="nav-link">Home</a></li>
+                    <li><a href="/blogs.html" class="nav-link">Blogs</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link active">Tools</a>
+                        <div class="dropdown-content">
+                            <a href="/tests.html" class="dropdown-link">Tests</a>
+                            <a href="/ascalc.html" class="dropdown-link">AS Calculator</a>
+                            <a href="/ip_address.html" class="dropdown-link">IP Calculator</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link">Labs</a>
+                        <div class="dropdown-content">
+                            <a href="/labs/eigrp.html" class="dropdown-link">EIGRP</a>
+                            <a href="/labs/ospf.html" class="dropdown-link">OSPF</a>
+                            <a href="/labs/rip.html" class="dropdown-link">RIP</a>
+                            <a href="/labs/bgp.html" class="dropdown-link">BGP</a>
+                        </div>
+                    </li>
+                </ul>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="welcome-section fade-in">
+            <h1>Routing Protocol Test</h1>
+            <p>This test covers various routing protocols and their implementations.</p>
+        </section>
+
+        <section class="content-section fade-in">
+            <div id="quiz-container">
+                <div id="question-display">
+                    <h2 id="question-text"></h2>
+                    <div id="options-container"></div>
+                </div>
+                <button id="next-button">Next Question</button>
+            </div>
+            <div id="score-card" style="display:none;">
+                <h2>Quiz Complete!</h2>
+                <p>Your score: <span id="score"></span> / <span id="total-questions"></span></p>
+                <button id="restart-button">Restart Quiz</button>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Networking Essentials. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../theme.js"></script>
+    <script>
+        const questions = [
+            {
+                question: "What is the primary function of a router?",
+                options: ["To connect devices within a local area network", "To filter network traffic", "To forward data packets between computer networks", "To amplify network signals"],
+                answer: "To forward data packets between computer networks"
+            },
+            {
+                question: "Which routing protocol uses a hop count as its metric?",
+                options: ["OSPF", "EIGRP", "RIP", "BGP"],
+                answer: "RIP"
+            },
+            {
+                question: "What is Administrative Distance (AD)?",
+                options: ["A metric used by routing protocols to determine the best path", "A value used by routers to select the best path when multiple routing protocols provide routes to the same destination", "The number of hops to a destination", "The speed of a network link"],
+                answer: "A value used by routers to select the best path when multiple routing protocols provide routes to the same destination"
+            },
+            {
+                question: "Which routing protocol is a link-state protocol?",
+                options: ["RIP", "EIGRP", "OSPF", "BGP"],
+                answer: "OSPF"
+            },
+            {
+                question: "What does OSPF stand for?",
+                options: ["Open Shortest Path First", "Open System Packet Forwarding", "Optimal Standard Protocol Function", "Ordered System Path Finding"],
+                answer: "Open Shortest Path First"
+            },
+            {
+                question: "Which routing protocol is considered a hybrid routing protocol?",
+                options: ["RIP", "OSPF", "EIGRP", "BGP"],
+                answer: "EIGRP"
+            },
+            {
+                question: "What is the default Administrative Distance for OSPF?",
+                options: ["90", "100", "110", "120"],
+                answer: "110"
+            },
+            {
+                question: "Which routing protocol is an exterior gateway protocol?",
+                options: ["RIP", "OSPF", "EIGRP", "BGP"],
+                answer: "BGP"
+            },
+            {
+                question: "What is a stub area in OSPF?",
+                options: ["An area that only allows default routes", "An area that connects to multiple other areas", "An area that does not allow external routes", "An area that only uses static routes"],
+                answer: "An area that does not allow external routes"
+            },
+            {
+                question: "Which EIGRP table stores all learned routes, including feasible successors?",
+                options: ["Neighbor Table", "Topology Table", "Routing Table", "Adjacency Table"],
+                answer: "Topology Table"
+            },
+            {
+                question: "What is route summarization?",
+                options: ["Combining multiple routes into a single, more general route", "Splitting a single route into multiple specific routes", "Adding a default route to the routing table", "Removing redundant routes from the routing table"],
+                answer: "Combining multiple routes into a single, more general route"
+            },
+            {
+                question: "Which of the following is a characteristic of distance-vector routing protocols?",
+                options: ["They have a complete view of the network topology", "They send periodic updates of their entire routing table", "They use Dijkstra's algorithm to calculate the shortest path", "They are highly scalable for large networks"],
+                answer: "They send periodic updates of their entire routing table"
+            },
+            {
+                question: "What is the purpose of a default route?",
+                options: ["To route traffic to a specific destination network", "To route traffic to any destination not explicitly listed in the routing table", "To prevent routing loops", "To prioritize certain types of traffic"],
+                answer: "To route traffic to any destination not explicitly listed in the routing table"
+            },
+            {
+                question: "Which command is used to view the routing table on a Cisco router?",
+                options: ["show ip interface brief", "show cdp neighbor", "show ip route", "show running-config"],
+                answer: "show ip route"
+            },
+            {
+                question: "What is a routing loop?",
+                options: ["A path that traffic takes to reach its destination", "A situation where packets are continuously forwarded in a circle within a network", "A method of load balancing traffic across multiple paths", "A security mechanism to prevent unauthorized access"],
+                answer: "A situation where packets are continuously forwarded in a circle within a network"
+            },
+            {
+                question: "Which of the following is a valid metric for EIGRP?",
+                options: ["Hop Count", "Bandwidth and Delay", "Cost", "Path Attributes"],
+                answer: "Bandwidth and Delay"
+            },
+            {
+                question: "What is the purpose of a Designated Router (DR) in OSPF?",
+                options: ["To act as a central point for all routing updates in an area", "To forward all traffic to other areas", "To prevent routing loops", "To assign IP addresses to devices"],
+                answer: "To act as a central point for all routing updates in an area"
+            },
+            {
+                question: "Which routing protocol uses autonomous system numbers?",
+                options: ["RIP", "OSPF", "EIGRP", "BGP"],
+                answer: "BGP"
+            },
+            {
+                question: "What is the maximum hop count for RIPv2?",
+                options: ["15", "16", "30", "255"],
+                answer: "15"
+            },
+            {
+                question: "Which type of routing is configured manually by an administrator?",
+                options: ["Dynamic Routing", "Static Routing", "Default Routing", "Policy-Based Routing"],
+                answer: "Static Routing"
+            }
+        ];
+
+        let selectedQuestions = [];
+        let currentQuestionIndex = 0;
+        let score = 0;
+
+        const quizContainer = document.getElementById('quiz-container');
+        const questionText = document.getElementById('question-text');
+        const optionsContainer = document.getElementById('options-container');
+        const nextButton = document.getElementById('next-button');
+        const scoreCard = document.getElementById('score-card');
+        const scoreDisplay = document.getElementById('score');
+        const totalQuestionsDisplay = document.getElementById('total-questions');
+        const restartButton = document.getElementById('restart-button');
+
+        function selectRandomQuestions() {
+            const shuffled = [...questions].sort(() => 0.5 - Math.random());
+            selectedQuestions = shuffled.slice(0, 10); // Select 10 random questions
+        }
+
+        function displayQuestion() {
+            if (currentQuestionIndex < selectedQuestions.length) {
+                const q = selectedQuestions[currentQuestionIndex];
+                questionText.textContent = `Question ${currentQuestionIndex + 1}: ${q.question}`;
+                optionsContainer.innerHTML = '';
+                q.options.forEach(option => {
+                    const button = document.createElement('button');
+                    button.textContent = option;
+                    button.classList.add('option-button');
+                    button.onclick = () => selectOption(option, q.answer);
+                    optionsContainer.appendChild(button);
+                });
+                nextButton.style.display = 'none'; // Hide next button until an option is selected
+            } else {
+                showScore();
+            }
+        }
+
+        function selectOption(selectedOption, correctAnswer) {
+            const optionButtons = optionsContainer.querySelectorAll('.option-button');
+            optionButtons.forEach(button => {
+                button.disabled = true; // Disable all options after selection
+                if (button.textContent === correctAnswer) {
+                    button.classList.add('correct');
+                } else if (button.textContent === selectedOption) {
+                    button.classList.add('incorrect');
+                }
+            });
+
+            if (selectedOption === correctAnswer) {
+                score++;
+            }
+            nextButton.style.display = 'block'; // Show next button
+        }
+
+        function showScore() {
+            quizContainer.style.display = 'none';
+            scoreCard.style.display = 'block';
+            scoreDisplay.textContent = score;
+            totalQuestionsDisplay.textContent = selectedQuestions.length;
+        }
+
+        function restartQuiz() {
+            currentQuestionIndex = 0;
+            score = 0;
+            selectRandomQuestions();
+            quizContainer.style.display = 'block';
+            scoreCard.style.display = 'none';
+            displayQuestion();
+        }
+
+        nextButton.onclick = () => {
+            currentQuestionIndex++;
+            displayQuestion();
+        };
+
+        restartButton.onclick = restartQuiz;
+
+        // Initialize quiz
+        selectRandomQuestions();
+        displayQuestion();
+    </script>
+</body>
+</html>

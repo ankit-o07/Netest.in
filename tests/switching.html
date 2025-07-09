@@ -1,0 +1,259 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Switching Concepts Test - Networking Hub</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <a href="/" class="logo">Networking Essentials</a>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="/index.html" class="nav-link">Home</a></li>
+                    <li><a href="/blogs.html" class="nav-link">Blogs</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link active">Tools</a>
+                        <div class="dropdown-content">
+                            <a href="/tests.html" class="dropdown-link">Tests</a>
+                            <a href="/ascalc.html" class="dropdown-link">AS Calculator</a>
+                            <a href="/ip_address.html" class="dropdown-link">IP Calculator</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link">Labs</a>
+                        <div class="dropdown-content">
+                            <a href="/labs/eigrp.html" class="dropdown-link">EIGRP</a>
+                            <a href="/labs/ospf.html" class="dropdown-link">OSPF</a>
+                            <a href="/labs/rip.html" class="dropdown-link">RIP</a>
+                            <a href="/labs/bgp.html" class="dropdown-link">BGP</a>
+                        </div>
+                    </li>
+                </ul>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="welcome-section fade-in">
+            <h1>Switching Concepts Test</h1>
+            <p>This test covers switching concepts and VLANs.</p>
+        </section>
+
+        <section class="content-section fade-in">
+            <div id="quiz-container">
+                <div id="question-display">
+                    <h2 id="question-text"></h2>
+                    <div id="options-container"></div>
+                </div>
+                <button id="next-button">Next Question</button>
+            </div>
+            <div id="score-card" style="display:none;">
+                <h2>Quiz Complete!</h2>
+                <p>Your score: <span id="score"></span> / <span id="total-questions"></span></p>
+                <button id="restart-button">Restart Quiz</button>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Networking Essentials. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../theme.js"></script>
+    <script>
+        const questions = [
+            {
+                question: "What is the primary function of a Layer 2 switch?",
+                options: ["Routes packets between different networks", "Forwards frames based on MAC addresses", "Assigns IP addresses to devices", "Translates domain names to IP addresses"],
+                answer: "Forwards frames based on MAC addresses"
+            },
+            {
+                question: "What does VLAN stand for?",
+                options: ["Virtual Local Area Network", "Very Large Area Network", "Virtual Link Access Node", "Voice Line Area Network"],
+                answer: "Virtual Local Area Network"
+            },
+            {
+                question: "What is the purpose of Spanning Tree Protocol (STP)?",
+                options: ["To prevent routing loops", "To prevent switching loops", "To provide redundant paths", "To manage IP addresses"],
+                answer: "To prevent switching loops"
+            },
+            {
+                question: "Which STP port state actively forwards traffic?",
+                options: ["Blocking", "Listening", "Learning", "Forwarding"],
+                answer: "Forwarding"
+            },
+            {
+                question: "What is a trunk port on a switch?",
+                options: ["A port that connects to an end device", "A port that carries traffic for multiple VLANs", "A port used for management only", "A port that blocks all traffic"],
+                answer: "A port that carries traffic for multiple VLANs"
+            },
+            {
+                question: "Which of the following is a benefit of using VLANs?",
+                options: ["Increased network congestion", "Reduced security", "Improved network performance and security", "Simplified network management"],
+                answer: "Improved network performance and security"
+            },
+            {
+                question: "What is the default VLAN for Cisco switches?",
+                options: ["VLAN 1", "VLAN 10", "VLAN 100", "VLAN 1000"],
+                answer: "VLAN 1"
+            },
+            {
+                question: "Which protocol is used to allow multiple switches to share VLAN information?",
+                options: ["STP", "VTP", "CDP", "LLDP"],
+                answer: "VTP"
+            },
+            {
+                question: "What is a MAC address table (CAM table) used for?",
+                options: ["To store IP addresses and their corresponding MAC addresses", "To store routing information", "To store VLAN configurations", "To store MAC addresses and the ports they are learned on"],
+                answer: "To store MAC addresses and the ports they are learned on"
+            },
+            {
+                question: "Which type of attack involves flooding a switch's MAC address table?",
+                options: ["ARP Spoofing", "MAC Flooding", "VLAN Hopping", "DHCP Snooping"],
+                answer: "MAC Flooding"
+            },
+            {
+                question: "What is EtherChannel?",
+                options: ["A technology that groups multiple physical Ethernet links into one logical link", "A protocol used for securing wireless networks", "A method for assigning IP addresses dynamically", "A feature that prevents switching loops"],
+                answer: "A technology that groups multiple physical Ethernet links into one logical link"
+            },
+            {
+                question: "Which of the following is a valid STP port role?",
+                options: ["Master Port", "Slave Port", "Root Port", "Edge Port"],
+                answer: "Root Port"
+            },
+            {
+                question: "What is the purpose of Port Security on a switch?",
+                options: ["To encrypt data transmitted over the port", "To restrict the number of MAC addresses allowed on a port", "To prioritize traffic on a port", "To enable remote access to the switch"],
+                answer: "To restrict the number of MAC addresses allowed on a port"
+            },
+            {
+                question: "Which protocol is used to provide redundancy for default gateways?",
+                options: ["STP", "VTP", "HSRP", "LACP"],
+                answer: "HSRP"
+            },
+            {
+                question: "What is the function of a distribution layer switch in a three-tier network design?",
+                options: ["Connects end devices to the network", "Aggregates access layer switches and provides routing", "Connects to the internet and other external networks", "Provides power over Ethernet"],
+                answer: "Aggregates access layer switches and provides routing"
+            },
+            {
+                question: "Which of the following is a characteristic of a Layer 3 switch?",
+                options: ["Operates only at the Data Link Layer", "Can perform routing functions", "Does not support VLANs", "Is typically used in small home networks"],
+                answer: "Can perform routing functions"
+            },
+            {
+                question: "What is the purpose of a native VLAN on a trunk port?",
+                options: ["It carries untagged traffic", "It is used for management traffic only", "It is the default VLAN for all ports", "It is used for voice traffic"],
+                answer: "It carries untagged traffic"
+            },
+            {
+                question: "Which command is used to configure a VLAN on a Cisco switch?",
+                options: ["ip address", "interface vlan", "vlan database", "vlan [vlan-id]"],
+                answer: "vlan [vlan-id]"
+            },
+            {
+                question: "What is the purpose of BPDU Guard?",
+                options: ["To protect against rogue DHCP servers", "To prevent unauthorized devices from connecting to the network", "To prevent unauthorized BPDUs from entering the network", "To secure ARP tables"],
+                answer: "To prevent unauthorized BPDUs from entering the network"
+            },
+            {
+                question: "Which mode allows a switch port to dynamically negotiate trunking?",
+                options: ["Access mode", "Trunk mode", "Dynamic Auto", "Dynamic Desirable"],
+                answer: "Dynamic Desirable"
+            }
+        ];
+
+        let selectedQuestions = [];
+        let currentQuestionIndex = 0;
+        let score = 0;
+
+        const quizContainer = document.getElementById('quiz-container');
+        const questionText = document.getElementById('question-text');
+        const optionsContainer = document.getElementById('options-container');
+        const nextButton = document.getElementById('next-button');
+        const scoreCard = document.getElementById('score-card');
+        const scoreDisplay = document.getElementById('score');
+        const totalQuestionsDisplay = document.getElementById('total-questions');
+        const restartButton = document.getElementById('restart-button');
+
+        function selectRandomQuestions() {
+            const shuffled = [...questions].sort(() => 0.5 - Math.random());
+            selectedQuestions = shuffled.slice(0, 10); // Select 10 random questions
+        }
+
+        function displayQuestion() {
+            if (currentQuestionIndex < selectedQuestions.length) {
+                const q = selectedQuestions[currentQuestionIndex];
+                questionText.textContent = `Question ${currentQuestionIndex + 1}: ${q.question}`;
+                optionsContainer.innerHTML = '';
+                q.options.forEach(option => {
+                    const button = document.createElement('button');
+                    button.textContent = option;
+                    button.classList.add('option-button');
+                    button.onclick = () => selectOption(option, q.answer);
+                    optionsContainer.appendChild(button);
+                });
+                nextButton.style.display = 'none'; // Hide next button until an option is selected
+            } else {
+                showScore();
+            }
+        }
+
+        function selectOption(selectedOption, correctAnswer) {
+            const optionButtons = optionsContainer.querySelectorAll('.option-button');
+            optionButtons.forEach(button => {
+                button.disabled = true; // Disable all options after selection
+                if (button.textContent === correctAnswer) {
+                    button.classList.add('correct');
+                } else if (button.textContent === selectedOption) {
+                    button.classList.add('incorrect');
+                }
+            });
+
+            if (selectedOption === correctAnswer) {
+                score++;
+            }
+            nextButton.style.display = 'block'; // Show next button
+        }
+
+        function showScore() {
+            quizContainer.style.display = 'none';
+            scoreCard.style.display = 'block';
+            scoreDisplay.textContent = score;
+            totalQuestionsDisplay.textContent = selectedQuestions.length;
+        }
+
+        function restartQuiz() {
+            currentQuestionIndex = 0;
+            score = 0;
+            selectRandomQuestions();
+            quizContainer.style.display = 'block';
+            scoreCard.style.display = 'none';
+            displayQuestion();
+        }
+
+        nextButton.onclick = () => {
+            currentQuestionIndex++;
+            displayQuestion();
+        };
+
+        restartButton.onclick = restartQuiz;
+
+        // Initialize quiz
+        selectRandomQuestions();
+        displayQuestion();
+    </script>
+</body>
+</html>

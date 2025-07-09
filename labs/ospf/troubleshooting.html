@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSPF Troubleshooting - Networking Essentials</title>
+    <meta name="description" content="Common OSPF troubleshooting steps and commands.">
+    <meta name="keywords" content="OSPF troubleshooting, OSPF commands, OSPF issues">
+    <meta name="author" content="Networking Essentials">
+    <meta name="robots" content="index, follow">
+    <link rel="stylesheet" href="../../styles.css">
+    <script defer src="../../theme.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <a href="/" class="logo">Networking Essentials</a>
+            <button class="mobile-menu-toggle" aria-label="Open navigation menu" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="/index.html" class="nav-link">Home</a></li>
+                    <li><a href="/blogs.html" class="nav-link">Blogs</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link dropdown-toggle">Tools</a>
+                        <ul class="dropdown-content">
+                            <li><a href="/tests.html" class="dropdown-link">Tests</a></li>
+                            <li><a href="/ascalc.html" class="dropdown-link">AS Calculator</a></li>
+                            <li><a href="/ip_address.html" class="dropdown-link">IP Calculator</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link dropdown-toggle">Labs</a>
+                        <ul class="dropdown-content">
+                            <li><a href="/labs/eigrp.html" class="dropdown-link">EIGRP</a></li>
+                            <li><a href="/labs/ospf.html" class="dropdown-link active">OSPF</a></li>
+                            <li><a href="/labs/rip.html" class="dropdown-link">RIP</a></li>
+                            <li><a href="/labs/bgp.html" class="dropdown-link">BGP</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="welcome-section fade-in">
+            <h1>OSPF Troubleshooting</h1>
+            <p>Troubleshooting OSPF involves checking neighbor adjacencies, LSA database consistency, and routing table entries. Here are some common issues and commands.</p>
+        </section>
+        <section class="content-section fade-in">
+            <div class="content-card">
+                <h3>Common Issues:</h3>
+                <ul>
+                    <li><strong>Neighbor Adjacency Issues:</strong> Mismatched Hello/Dead timers, network types, authentication, area IDs, or subnet masks.</li>
+                    <li><strong>LSDB Mismatches:</strong> Indicates issues with LSA flooding or database synchronization.</li>
+                    <li><strong>Routing Inconsistencies:</strong> Incorrect route calculations or missing routes.</li>
+                </ul>
+                <h3>Useful Commands:</h3>
+                <ul>
+                    <li><code>show ip ospf neighbor</code>: Verifies OSPF neighbor adjacencies and states.</li>
+                    <li><code>show ip ospf database</code>: Displays the OSPF link-state database.</li>
+                    <li><code>show ip ospf interface [interface-type interface-number]</code>: Shows OSPF interface parameters.</li>
+                    <li><code>show ip protocols</code>: Displays routing protocol parameters.</li>
+                    <li><code>clear ip ospf process</code>: Resets the OSPF process (use with caution).</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">&copy; 2025 Networking Essentials. All rights reserved.</div>
+    </footer>
+</body>
+</html>

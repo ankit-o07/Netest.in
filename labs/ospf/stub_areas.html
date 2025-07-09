@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSPF Stub Areas - Networking Essentials</title>
+    <meta name="description" content="Understanding OSPF stub, totally stubby, and NSSA areas.">
+    <meta name="keywords" content="OSPF stub, totally stubby, NSSA, area types, LSA types">
+    <meta name="author" content="Networking Essentials">
+    <meta name="robots" content="index, follow">
+    <link rel="stylesheet" href="../../styles.css">
+    <script defer src="../../theme.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <a href="/" class="logo">Networking Essentials</a>
+            <button class="mobile-menu-toggle" aria-label="Open navigation menu" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="/index.html" class="nav-link">Home</a></li>
+                    <li><a href="/blogs.html" class="nav-link">Blogs</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link dropdown-toggle">Tools</a>
+                        <ul class="dropdown-content">
+                            <li><a href="/tests.html" class="dropdown-link">Tests</a></li>
+                            <li><a href="/ascalc.html" class="dropdown-link">AS Calculator</a></li>
+                            <li><a href="/ip_address.html" class="dropdown-link">IP Calculator</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link dropdown-toggle">Labs</a>
+                        <ul class="dropdown-content">
+                            <li><a href="/labs/eigrp.html" class="dropdown-link">EIGRP</a></li>
+                            <li><a href="/labs/ospf.html" class="dropdown-link active">OSPF</a></li>
+                            <li><a href="/labs/rip.html" class="dropdown-link">RIP</a></li>
+                            <li><a href="/labs/bgp.html" class="dropdown-link">BGP</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="welcome-section fade-in">
+            <h1>OSPF Stub Areas</h1>
+            <p>OSPF allows for different area types to control the propagation of routing information, reducing routing table size and improving scalability. Stub areas are designed to minimize the amount of routing information within an area.</p>
+        </section>
+        <section class="content-section fade-in">
+            <div class="content-card">
+                <h3>Stub Area:</h3>
+                <ul>
+                    <li>Does not allow Type 5 LSAs (external routes) to be flooded into the area.</li>
+                    <li>An ABR in a stub area injects a default route (0.0.0.0) as a Type 3 LSA into the stub area.</li>
+                    <li>Configuration: <code>area [area-id] stub</code></li>
+                </ul>
+
+                <h3>Totally Stubby Area (Cisco Proprietary):</h3>
+                <ul>
+                    <li>Does not allow Type 5 LSAs or Type 3 LSAs (summary routes) to be flooded into the area.</li>
+                    <li>An ABR in a totally stubby area injects only a default route (0.0.0.0) as a Type 3 LSA.</li>
+                    <li>Configuration: <code>area [area-id] stub no-summary</code></li>
+                </ul>
+
+                <h3>Not-So-Stubby Area (NSSA):</h3>
+                <ul>
+                    <li>Allows the injection of external routes into the NSSA via a Type 7 LSA.</li>
+                    <li>Type 7 LSAs are translated into Type 5 LSAs by the NSSA ABR when flooded to other areas (including the backbone).</li>
+                    <li>Configuration: <code>area [area-id] nssa</code></li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">&copy; 2025 Networking Essentials. All rights reserved.</div>
+    </footer>
+</body>
+</html>

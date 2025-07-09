@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BGP Overview and Features - Networking Essentials</title>
+    <meta name="description" content="Understanding the fundamental concepts and features of BGP.">
+    <meta name="keywords" content="BGP overview, BGP features, Border Gateway Protocol">
+    <meta name="author" content="Networking Essentials">
+    <meta name="robots" content="index, follow">
+    <link rel="stylesheet" href="../../styles.css">
+    <script defer src="../../theme.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <a href="/" class="logo">Networking Essentials</a>
+            <button class="mobile-menu-toggle" aria-label="Open navigation menu" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="/index.html" class="nav-link">Home</a></li>
+                    <li><a href="/blogs.html" class="nav-link">Blogs</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link dropdown-toggle">Tools</a>
+                        <ul class="dropdown-content">
+                            <li><a href="/tests.html" class="dropdown-link">Tests</a></li>
+                            <li><a href="/ascalc.html" class="dropdown-link">AS Calculator</a></li>
+                            <li><a href="/ip_address.html" class="dropdown-link">IP Calculator</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link dropdown-toggle">Labs</a>
+                        <ul class="dropdown-content">
+                            <li><a href="/labs/eigrp.html" class="dropdown-link">EIGRP</a></li>
+                            <li><a href="/labs/ospf.html" class="dropdown-link">OSPF</a></li>
+                            <li><a href="/labs/rip.html" class="dropdown-link">RIP</a></li>
+                            <li><a href="/labs/bgp.html" class="dropdown-link active">BGP</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="welcome-section fade-in">
+            <h1>BGP Overview and Features</h1>
+            <p>Border Gateway Protocol (BGP) is an exterior gateway protocol (EGP) used to exchange routing information among autonomous systems (AS) on the Internet. It is a path-vector protocol, meaning it carries a list of AS numbers that a route has traversed.</p>
+        </section>
+        <section class="content-section fade-in">
+            <div class="content-card">
+                <h3>Key Features:</h3>
+                <ul>
+                    <li><strong>Path Vector Protocol:</strong> BGP advertises paths, not just next-hop information.</li>
+                    <li><strong>Policy-Based Routing:</strong> Highly flexible for implementing routing policies.</li>
+                    <li><strong>Scalability:</strong> Designed to handle the large scale of the Internet.</li>
+                    <li><strong>TCP Port 179:</strong> Uses TCP for reliable communication between BGP peers.</li>
+                    <li><strong>Autonomous Systems:</strong> Operates between different autonomous systems.</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">&copy; 2025 Networking Essentials. All rights reserved.</div>
+    </footer>
+</body>
+</html>

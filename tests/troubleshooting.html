@@ -1,0 +1,259 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Troubleshooting Test - Networking Hub</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <a href="/" class="logo">Networking Essentials</a>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="/index.html" class="nav-link">Home</a></li>
+                    <li><a href="/blogs.html" class="nav-link">Blogs</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link active">Tools</a>
+                        <div class="dropdown-content">
+                            <a href="/tests.html" class="dropdown-link">Tests</a>
+                            <a href="/ascalc.html" class="dropdown-link">AS Calculator</a>
+                            <a href="/ip_address.html" class="dropdown-link">IP Calculator</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link">Labs</a>
+                        <div class="dropdown-content">
+                            <a href="/labs/eigrp.html" class="dropdown-link">EIGRP</a>
+                            <a href="/labs/ospf.html" class="dropdown-link">OSPF</a>
+                            <a href="/labs/rip.html" class="dropdown-link">RIP</a>
+                            <a href="/labs/bgp.html" class="dropdown-link">BGP</a>
+                        </div>
+                    </li>
+                </ul>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="welcome-section fade-in">
+            <h1>Troubleshooting Test</h1>
+            <p>This test sharpens your skills in diagnosing and resolving network issues.</p>
+        </section>
+
+        <section class="content-section fade-in">
+            <div id="quiz-container">
+                <div id="question-display">
+                    <h2 id="question-text"></h2>
+                    <div id="options-container"></div>
+                </div>
+                <button id="next-button">Next Question</button>
+            </div>
+            <div id="score-card" style="display:none;">
+                <h2>Quiz Complete!</h2>
+                <p>Your score: <span id="score"></span> / <span id="total-questions"></span></p>
+                <button id="restart-button">Restart Quiz</button>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Networking Essentials. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../theme.js"></script>
+    <script>
+        const questions = [
+            {
+                question: "What is the first step in the troubleshooting process according to the OSI model?",
+                options: ["Check physical connectivity", "Gather information", "Identify the problem", "Implement a solution"],
+                answer: "Identify the problem"
+            },
+            {
+                question: "Which command is used to test connectivity to a remote host?",
+                options: ["ipconfig", "ifconfig", "ping", "tracert"],
+                answer: "ping"
+            },
+            {
+                question: "What does 'tracert' (Windows) or 'traceroute' (Linux/macOS) command do?",
+                options: ["Displays network configuration", "Shows active network connections", "Traces the path a packet takes to a destination", "Resolves domain names to IP addresses"],
+                answer: "Traces the path a packet takes to a destination"
+            },
+            {
+                question: "If a user cannot access a website, but can ping its IP address, what is the most likely issue?",
+                options: ["DNS resolution failure", "Physical layer issue", "Incorrect IP address", "Firewall blocking ping"],
+                answer: "DNS resolution failure"
+            },
+            {
+                question: "What is a common cause of intermittent network connectivity?",
+                options: ["Incorrect subnet mask", "Loose cable connection", "Wrong default gateway", "Duplicate IP address"],
+                answer: "Loose cable connection"
+            },
+            {
+                question: "Which layer of the OSI model is responsible for logical addressing (IP addresses)?",
+                options: ["Physical Layer", "Data Link Layer", "Network Layer", "Transport Layer"],
+                answer: "Network Layer"
+            },
+            {
+                question: "A user reports slow network performance. What is a good initial step to diagnose the problem?",
+                options: ["Replace the network card", "Check network cable integrity", "Reinstall the operating system", "Upgrade the router firmware"],
+                answer: "Check network cable integrity"
+            },
+            {
+                question: "What does the 'ipconfig /all' command show on a Windows machine?",
+                options: ["Only IP address and subnet mask", "Detailed TCP/IP configuration including MAC address and DNS servers", "Routing table entries", "Active network connections"],
+                answer: "Detailed TCP/IP configuration including MAC address and DNS servers"
+            },
+            {
+                question: "If you suspect a loop in your network, which protocol helps prevent it at Layer 2?",
+                options: ["OSPF", "BGP", "STP", "RIP"],
+                answer: "STP"
+            },
+            {
+                question: "What is the purpose of a packet sniffer (e.g., Wireshark) in troubleshooting?",
+                options: ["To block malicious traffic", "To analyze network traffic and identify issues", "To configure network devices", "To test network speed"],
+                answer: "To analyze network traffic and identify issues"
+            },
+            {
+                question: "A server is unreachable by its hostname but reachable by its IP address. What service should you check?",
+                options: ["DHCP", "DNS", "ARP", "NAT"],
+                answer: "DNS"
+            },
+            {
+                question: "What does a 'Request timed out' message from a ping command usually indicate?",
+                options: ["The destination host is busy", "The destination host is unreachable or blocking ICMP", "The source host has a firewall issue", "The network cable is disconnected"],
+                answer: "The destination host is unreachable or blocking ICMP"
+            },
+            {
+                question: "Which troubleshooting methodology involves starting from the physical layer and moving up the OSI model?",
+                options: ["Top-down approach", "Bottom-up approach", "Divide and conquer", "Follow the path"],
+                answer: "Bottom-up approach"
+            },
+            {
+                question: "What is a common symptom of a duplex mismatch on an Ethernet link?",
+                options: ["No connectivity", "Slow performance and high collision rates", "Incorrect IP address assignment", "Intermittent Wi-Fi disconnections"],
+                answer: "Slow performance and high collision rates"
+            },
+            {
+                question: "When troubleshooting a routing issue, which command would you use to view the routing table on a Linux system?",
+                options: ["netstat -r", "ip route show", "route print", "show ip route"],
+                answer: "ip route show"
+            },
+            {
+                question: "A user reports that their VoIP calls are choppy. What network issue is most likely causing this?",
+                options: ["High latency", "Low bandwidth", "Packet loss", "All of the above"],
+                answer: "All of the above"
+            },
+            {
+                question: "What is the purpose of a baseline in network troubleshooting?",
+                options: ["To define the minimum acceptable network speed", "To establish a normal operating performance level for comparison", "To identify all network devices", "To configure network security policies"],
+                answer: "To establish a normal operating performance level for comparison"
+            },
+            {
+                question: "If a new device is not getting an IP address automatically, what service should you check on the network?",
+                options: ["DNS", "DHCP", "NTP", "SNMP"],
+                answer: "DHCP"
+            },
+            {
+                question: "What is the 'divide and conquer' troubleshooting approach?",
+                options: ["Starting from the physical layer", "Starting from the application layer", "Isolating the problem by narrowing down the scope", "Replacing all network components"],
+                answer: "Isolating the problem by narrowing down the scope"
+            },
+            {
+                question: "Which command can be used to display network statistics and active connections on both Windows and Linux?",
+                options: ["ping", "tracert", "netstat", "ipconfig"],
+                answer: "netstat"
+            }
+        ];
+
+        let selectedQuestions = [];
+        let currentQuestionIndex = 0;
+        let score = 0;
+
+        const quizContainer = document.getElementById('quiz-container');
+        const questionText = document.getElementById('question-text');
+        const optionsContainer = document.getElementById('options-container');
+        const nextButton = document.getElementById('next-button');
+        const scoreCard = document.getElementById('score-card');
+        const scoreDisplay = document.getElementById('score');
+        const totalQuestionsDisplay = document.getElementById('total-questions');
+        const restartButton = document.getElementById('restart-button');
+
+        function selectRandomQuestions() {
+            const shuffled = [...questions].sort(() => 0.5 - Math.random());
+            selectedQuestions = shuffled.slice(0, 10); // Select 10 random questions
+        }
+
+        function displayQuestion() {
+            if (currentQuestionIndex < selectedQuestions.length) {
+                const q = selectedQuestions[currentQuestionIndex];
+                questionText.textContent = `Question ${currentQuestionIndex + 1}: ${q.question}`;
+                optionsContainer.innerHTML = '';
+                q.options.forEach(option => {
+                    const button = document.createElement('button');
+                    button.textContent = option;
+                    button.classList.add('option-button');
+                    button.onclick = () => selectOption(option, q.answer);
+                    optionsContainer.appendChild(button);
+                });
+                nextButton.style.display = 'none'; // Hide next button until an option is selected
+            } else {
+                showScore();
+            }
+        }
+
+        function selectOption(selectedOption, correctAnswer) {
+            const optionButtons = optionsContainer.querySelectorAll('.option-button');
+            optionButtons.forEach(button => {
+                button.disabled = true; // Disable all options after selection
+                if (button.textContent === correctAnswer) {
+                    button.classList.add('correct');
+                } else if (button.textContent === selectedOption) {
+                    button.classList.add('incorrect');
+                }
+            });
+
+            if (selectedOption === correctAnswer) {
+                score++;
+            }
+            nextButton.style.display = 'block'; // Show next button
+        }
+
+        function showScore() {
+            quizContainer.style.display = 'none';
+            scoreCard.style.display = 'block';
+            scoreDisplay.textContent = score;
+            totalQuestionsDisplay.textContent = selectedQuestions.length;
+        }
+
+        function restartQuiz() {
+            currentQuestionIndex = 0;
+            score = 0;
+            selectRandomQuestions();
+            quizContainer.style.display = 'block';
+            scoreCard.style.display = 'none';
+            displayQuestion();
+        }
+
+        nextButton.onclick = () => {
+            currentQuestionIndex++;
+            displayQuestion();
+        };
+
+        restartButton.onclick = restartQuiz;
+
+        // Initialize quiz
+        selectRandomQuestions();
+        displayQuestion();
+    </script>
+</body>
+</html>

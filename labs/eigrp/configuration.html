@@ -1,0 +1,94 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EIGRP Configuration Guide - Networking Essentials</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <a href="/" class="logo">Networking Essentials</a>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="/index.html" class="nav-link">Home</a></li>
+                    <li><a href="/blogs.html" class="nav-link">Blogs</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link">Tools</a>
+                        <div class="dropdown-content">
+                            <a href="/tests.html" class="dropdown-link">Tests</a>
+                            <a href="/ascalc.html" class="dropdown-link">AS Calculator</a>
+                            <a href="/ip_address.html" class="dropdown-link">IP Calculator</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link active">Labs</a>
+                        <div class="dropdown-content">
+                            <a href="/labs/eigrp.html" class="dropdown-link">EIGRP</a>
+                            <a href="/labs/ospf.html" class="dropdown-link">OSPF</a>
+                            <a href="/labs/rip.html" class="dropdown-link">RIP</a>
+                            <a href="/labs/bgp.html" class="dropdown-link">BGP</a>
+                        </div>
+                    </li>
+                </ul>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="content-section fade-in">
+            <h1>EIGRP Configuration Guide</h1>
+            <div class="content-card">
+                <p>Configuring EIGRP involves enabling the protocol on the router and specifying the networks to be advertised. Here's a basic guide:</p>
+                <h3>Basic EIGRP Configuration:</h3>
+                <pre><code>Router(config)# router eigrp &lt;AS-number&gt;
+Router(config-router)# network &lt;network-address&gt; [wildcard-mask]
+Router(config-router)# no auto-summary</code></pre>
+                <ul>
+                    <li><code>&lt;AS-number&gt;</code>: Autonomous System number. All routers in the same EIGRP domain must use the same AS number.</li>
+                    <li><code>network &lt;network-address&gt; [wildcard-mask]</code>: Advertises directly connected networks. The wildcard mask is optional but recommended for precise network advertisement.</li>
+                    <li><code>no auto-summary</code>: Disables automatic summarization of routes at classful network boundaries. This is highly recommended in modern networks to prevent routing issues.</li>
+                </ul>
+
+                <h3>Passive Interface:</h3>
+                <p>To prevent EIGRP from sending Hello packets and updates out of an interface, but still advertise the network connected to it:</p>
+                <pre><code>Router(config-router)# passive-interface &lt;interface-type&gt; &lt;interface-number&gt;</code></pre>
+
+                <h3>EIGRP Authentication:</h3>
+                <p>To secure EIGRP updates, MD5 authentication can be configured:</p>
+                <pre><code>Router(config)# key chain &lt;key-chain-name&gt;
+Router(config-keychain)# key 1
+Router(config-keychain-key)# key-string &lt;password&gt;
+Router(config-keychain-key)# exit
+Router(config-router)# interface &lt;interface-type&gt; &lt;interface-number&gt;
+Router(config-if)# ip authentication mode eigrp &lt;AS-number&gt; md5
+Router(config-if)# ip authentication key-chain eigrp &lt;AS-number&gt; &lt;key-chain-name&gt;</code></pre>
+
+                <h3>Verifying EIGRP:</h3>
+                <p>Useful commands to verify EIGRP operation:</p>
+                <ul>
+                    <li><code>show ip eigrp neighbors</code>: Displays EIGRP neighbors.</li>
+                    <li><code>show ip eigrp topology</code>: Shows the EIGRP topology table, including feasible successors.</li>
+                    <li><code>show ip route eigrp</code>: Displays EIGRP routes in the routing table.</li>
+                    <li><code>show ip protocols</code>: Provides information about active routing protocols.</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Networking Essentials. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../../theme.js"></script>
+</body>
+</html>

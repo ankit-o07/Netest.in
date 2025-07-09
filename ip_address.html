@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            "name": "Networking Essentials",
+            "description": "Calculate IP address subnets, ranges, and network information with our comprehensive IP calculator.",
+            "applicationCategory": "NetworkingTool",
+            "provider": {
+              "@type": "Organization",
+              "name": "Networking Essentials"
+            },
+            "url": "https://networkingessentials.in/ip_address.html"
+        }
+    </script>
+    <title>IP Address Calculator - Networking Essentials</title>
+    <meta name="description" content="Calculate IP subnets, network ranges, and address information with our easy-to-use IP calculator.">
+    <meta name="keywords" content="IP calculator, subnet calculator, network calculator, CIDR calculator, networking tools">
+    <meta name="author" content="Networking Essentials">
+    <meta name="robots" content="index, follow">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <a href="/" class="logo">Networking Essentials</a>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="/index.html" class="nav-link">Home</a></li>
+                    <li><a href="/blogs.html" class="nav-link">Blogs</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link">Tools</a>
+                        <div class="dropdown-content">
+                            <a href="/tests.html" class="dropdown-link">Tests</a>
+                            <a href="/ascalc.html" class="dropdown-link">AS Calculator</a>
+                            <a href="/ip_address.html" class="dropdown-link active">IP Calculator</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link">Labs</a>
+                        <div class="dropdown-content">
+                            <a href="/labs/eigrp.html" class="dropdown-link">EIGRP</a>
+                            <a href="/labs/ospf.html" class="dropdown-link">OSPF</a>
+                            <a href="/labs/rip.html" class="dropdown-link">RIP</a>
+                            <a href="/labs/bgp.html" class="dropdown-link">BGP</a>
+                        </div>
+                    </li>
+                </ul>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="welcome-section fade-in">
+            <h1>IP Address Calculator</h1>
+            <p>Calculate subnet ranges, network information, and IP address details with our comprehensive calculator.</p>
+        </section>
+
+        <section class="content-section fade-in">
+            <h2>IP Calculator</h2>
+            <div class="calculator-container">
+                <div class="calculator-form">
+                    <div class="input-group">
+                        <label for="ipInput">IP Address:</label>
+                        <input type="text" id="ipInput" placeholder="e.g., 192.168.1.0">
+                    </div>
+                    <div class="input-group">
+                        <label for="cidrInput">CIDR Prefix:</label>
+                        <input type="number" id="cidrInput" min="0" max="32" value="24" placeholder="e.g., 24">
+                    </div>
+                    <button id="calculateBtn" class="primary-button">Calculate</button>
+                </div>
+
+                <div class="results-container">
+                    <h3>Network Information</h3>
+                    <div class="result-group">
+                        <label>Network Address:</label>
+                        <span id="networkAddress">-</span>
+                    </div>
+                    <div class="result-group">
+                        <label>Broadcast Address:</label>
+                        <span id="broadcastAddress">-</span>
+                    </div>
+                    <div class="result-group">
+                        <label>First Host:</label>
+                        <span id="firstHost">-</span>
+                    </div>
+                    <div class="result-group">
+                        <label>Last Host:</label>
+                        <span id="lastHost">-</span>
+                    </div>
+                    <div class="result-group">
+                        <label>Total Hosts:</label>
+                        <span id="totalHosts">-</span>
+                    </div>
+                    <div class="result-group">
+                        <label>Subnet Mask:</label>
+                        <span id="subnetMask">-</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+            <section class="content-section fade-in">
+                <h2>IP Addressing Guide</h2>
+                <div class="content-card">
+                    <div class="feature-list">
+                        <h3>Quick Reference:</h3>
+                        <ul>
+                            <li><i class="fas fa-network-wired"></i> <strong>Class A:</strong> 1.0.0.0 to 126.255.255.255 (/8)</li>
+                            <li><i class="fas fa-network-wired"></i> <strong>Class B:</strong> 128.0.0.0 to 191.255.255.255 (/16)</li>
+                            <li><i class="fas fa-network-wired"></i> <strong>Class C:</strong> 192.0.0.0 to 223.255.255.255 (/24)</li>
+                            <li><i class="fas fa-shield-alt"></i> <strong>Private Ranges:</strong>
+                                <ul>
+                                    <li>10.0.0.0/8</li>
+                                    <li>172.16.0.0/12</li>
+                                    <li>192.168.0.0/16</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Networking Essentials. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="theme.js"></script>
+    <script>
+        document.getElementById('calculateBtn').addEventListener('click', calculateIP);
+
+        function calculateIP() {
+            const ipInput = document.getElementById('ipInput').value;
+            const cidrInput = parseInt(document.getElementById('cidrInput').value);
+
+            if (!isValidIP(ipInput) || isNaN(cidrInput) || cidrInput < 0 || cidrInput > 32) {
+                alert('Please enter a valid IP address and CIDR prefix');
+                return;
+            }
+
+            const ip = ipInput.split('.').map(Number);
+            const ipNum = (ip[0] << 24) + (ip[1] << 16) + (ip[2] << 8) + ip[3];
+            const mask = -1 << (32 - cidrInput);
+            const network = ipNum & mask;
+            const broadcast = network | (~mask);
+            const firstHost = network + 1;
+            const lastHost = broadcast - 1;
+            const totalHosts = Math.pow(2, 32 - cidrInput) - 2;
+
+            document.getElementById('networkAddress').textContent = numToIP(network);
+            document.getElementById('broadcastAddress').textContent = numToIP(broadcast);
+            document.getElementById('firstHost').textContent = numToIP(firstHost);
+            document.getElementById('lastHost').textContent = numToIP(lastHost);
+            document.getElementById('totalHosts').textContent = totalHosts.toLocaleString();
+            document.getElementById('subnetMask').textContent = numToIP(mask);
+        }
+
+        function isValidIP(ip) {
+            const parts = ip.split('.');
+            if (parts.length !== 4) return false;
+            return parts.every(part => {
+                const num = parseInt(part);
+                return !isNaN(num) && num >= 0 && num <= 255;
+            });
+        }
+
+        function numToIP(num) {
+            return [
+                (num >>> 24) & 255,
+                (num >>> 16) & 255,
+                (num >>> 8) & 255,
+                num & 255
+            ].join('.');
+        }
+    </script>
+</body>
+</html>

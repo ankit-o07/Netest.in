@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSPF Cost Calculation - Networking Essentials</title>
+    <meta name="description" content="Understanding how OSPF calculates route costs.">
+    <meta name="keywords" content="OSPF cost, bandwidth, metric, reference bandwidth">
+    <meta name="author" content="Networking Essentials">
+    <meta name="robots" content="index, follow">
+    <link rel="stylesheet" href="../../styles.css">
+    <script defer src="../../theme.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <a href="/" class="logo">Networking Essentials</a>
+            <button class="mobile-menu-toggle" aria-label="Open navigation menu" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="/index.html" class="nav-link">Home</a></li>
+                    <li><a href="/blogs.html" class="nav-link">Blogs</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link dropdown-toggle">Tools</a>
+                        <ul class="dropdown-content">
+                            <li><a href="/tests.html" class="dropdown-link">Tests</a></li>
+                            <li><a href="/ascalc.html" class="dropdown-link">AS Calculator</a></li>
+                            <li><a href="/ip_address.html" class="dropdown-link">IP Calculator</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link dropdown-toggle">Labs</a>
+                        <ul class="dropdown-content">
+                            <li><a href="/labs/eigrp.html" class="dropdown-link">EIGRP</a></li>
+                            <li><a href="/labs/ospf.html" class="dropdown-link active">OSPF</a></li>
+                            <li><a href="/labs/rip.html" class="dropdown-link">RIP</a></li>
+                            <li><a href="/labs/bgp.html" class="dropdown-link">BGP</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="welcome-section fade-in">
+            <h1>OSPF Cost Calculation</h1>
+            <p>OSPF uses a metric called "cost" to determine the best path to a destination. The cost is inversely proportional to the bandwidth of the interface.</p>
+        </section>
+        <section class="content-section fade-in">
+            <div class="content-card">
+                <h3>Formula:</h3>
+                <p><code>Cost = Reference Bandwidth / Interface Bandwidth</code></p>
+                <ul>
+                    <li>Default Reference Bandwidth: 100 Mbps (10^8 bps)</li>
+                    <li>Example: FastEthernet (100 Mbps) Cost = 10^8 / 10^8 = 1</li>
+                    <li>Example: GigabitEthernet (1000 Mbps) Cost = 10^8 / 10^9 = 0.1 (rounded up to 1)</li>
+                </ul>
+                <h3>Adjusting Reference Bandwidth:</h3>
+                <p>For faster links (e.g., GigabitEthernet, TenGigabitEthernet), the default reference bandwidth might cause all links to have a cost of 1. To ensure proper path selection, the reference bandwidth should be increased.</p>
+                <pre><code>router ospf 1
+ auto-cost reference-bandwidth 10000</code></pre>
+                <ul>
+                    <li>The value is in Mbps. <code>10000</code> means 10 Gbps.</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">&copy; 2025 Networking Essentials. All rights reserved.</div>
+    </footer>
+</body>
+</html>

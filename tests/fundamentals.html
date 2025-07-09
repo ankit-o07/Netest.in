@@ -1,0 +1,259 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Networking Fundamentals Test - Networking Hub</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <a href="/" class="logo">Networking Essentials</a>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="/index.html" class="nav-link">Home</a></li>
+                    <li><a href="/blogs.html" class="nav-link">Blogs</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link active">Tools</a>
+                        <div class="dropdown-content">
+                            <a href="/tests.html" class="dropdown-link">Tests</a>
+                            <a href="/ascalc.html" class="dropdown-link">AS Calculator</a>
+                            <a href="/ip_address.html" class="dropdown-link">IP Calculator</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link">Labs</a>
+                        <div class="dropdown-content">
+                            <a href="/labs/eigrp.html" class="dropdown-link">EIGRP</a>
+                            <a href="/labs/ospf.html" class="dropdown-link">OSPF</a>
+                            <a href="/labs/rip.html" class="dropdown-link">RIP</a>
+                            <a href="/labs/bgp.html" class="dropdown-link">BGP</a>
+                        </div>
+                    </li>
+                </ul>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="welcome-section fade-in">
+            <h1>Networking Fundamentals Test</h1>
+            <p>This test covers the basic concepts of networking.</p>
+        </section>
+
+        <section class="content-section fade-in">
+            <div id="quiz-container">
+                <div id="question-display">
+                    <h2 id="question-text"></h2>
+                    <div id="options-container"></div>
+                </div>
+                <button id="next-button">Next Question</button>
+            </div>
+            <div id="score-card" style="display:none;">
+                <h2>Quiz Complete!</h2>
+                <p>Your score: <span id="score"></span> / <span id="total-questions"></span></p>
+                <button id="restart-button">Restart Quiz</button>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Networking Essentials. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../theme.js"></script>
+    <script>
+        const questions = [
+            {
+                question: "What does OSI stand for?",
+                options: ["Open System Interconnection", "Operating System Interface", "Optical Service Integration", "Ordered System Information"],
+                answer: "Open System Interconnection"
+            },
+            {
+                question: "Which layer of the OSI model is responsible for logical addressing?",
+                options: ["Physical Layer", "Data Link Layer", "Network Layer", "Transport Layer"],
+                answer: "Network Layer"
+            },
+            {
+                question: "What is a MAC address?",
+                options: ["A logical address", "A physical address", "A network address", "A broadcast address"],
+                answer: "A physical address"
+            },
+            {
+                question: "Which device operates at the Data Link Layer of the OSI model?",
+                options: ["Router", "Switch", "Hub", "Repeater"],
+                answer: "Switch"
+            },
+            {
+                question: "What is the purpose of DNS?",
+                options: ["To assign IP addresses dynamically", "To translate domain names to IP addresses", "To secure network communication", "To manage network traffic"],
+                answer: "To translate domain names to IP addresses"
+            },
+            {
+                question: "Which protocol is used for reliable data transfer?",
+                options: ["UDP", "IP", "TCP", "ARP"],
+                answer: "TCP"
+            },
+            {
+                question: "What is the default port for HTTP?",
+                options: ["21", "23", "80", "443"],
+                answer: "80"
+            },
+            {
+                question: "What is a subnet mask used for?",
+                options: ["To identify the network and host portions of an IP address", "To encrypt data", "To route traffic between networks", "To assign IP addresses"],
+                answer: "To identify the network and host portions of an IP address"
+            },
+            {
+                question: "Which class of IP address ranges from 192.0.0.0 to 223.255.255.255?",
+                options: ["Class A", "Class B", "Class C", "Class D"],
+                answer: "Class C"
+            },
+            {
+                question: "What is the function of a router?",
+                options: ["To connect devices within a local area network", "To filter network traffic", "To forward data packets between computer networks", "To amplify network signals"],
+                answer: "To forward data packets between computer networks"
+            },
+            {
+                question: "What is the purpose of DHCP?",
+                options: ["To resolve domain names", "To assign IP addresses automatically", "To transfer files", "To manage network security"],
+                answer: "To assign IP addresses automatically"
+            },
+            {
+                question: "Which of the following is a private IP address range?",
+                options: ["11.0.0.0/8", "172.16.0.0/12", "193.0.0.0/8", "200.0.0.0/8"],
+                answer: "172.16.0.0/12"
+            },
+            {
+                question: "What is the maximum number of hops in a RIP network?",
+                options: ["15", "16", "30", "255"],
+                answer: "15"
+            },
+            {
+                question: "Which protocol is connectionless?",
+                options: ["TCP", "FTP", "UDP", "HTTP"],
+                answer: "UDP"
+            },
+            {
+                question: "What is the primary function of a firewall?",
+                options: ["To speed up network traffic", "To prevent unauthorized access to a network", "To translate IP addresses", "To manage network cables"],
+                answer: "To prevent unauthorized access to a network"
+            },
+            {
+                question: "Which layer of the TCP/IP model combines the Application, Presentation, and Session layers of the OSI model?",
+                options: ["Network Access Layer", "Internet Layer", "Transport Layer", "Application Layer"],
+                answer: "Application Layer"
+            },
+            {
+                question: "What is the command to view IP configuration on a Windows machine?",
+                options: ["ifconfig", "ip addr show", "ipconfig", "netstat"],
+                answer: "ipconfig"
+            },
+            {
+                question: "What is the purpose of ARP?",
+                options: ["To resolve IP addresses to MAC addresses", "To resolve MAC addresses to IP addresses", "To assign IP addresses", "To route packets"],
+                answer: "To resolve IP addresses to MAC addresses"
+            },
+            {
+                question: "Which type of cable is used for connecting a computer to a switch?",
+                options: ["Crossover cable", "Straight-through cable", "Coaxial cable", "Fiber optic cable"],
+                answer: "Straight-through cable"
+            },
+            {
+                question: "What is the loopback IP address?",
+                options: ["10.0.0.1", "172.16.0.1", "192.168.1.1", "127.0.0.1"],
+                answer: "127.0.0.1"
+            }
+        ];
+
+        let selectedQuestions = [];
+        let currentQuestionIndex = 0;
+        let score = 0;
+
+        const quizContainer = document.getElementById('quiz-container');
+        const questionText = document.getElementById('question-text');
+        const optionsContainer = document.getElementById('options-container');
+        const nextButton = document.getElementById('next-button');
+        const scoreCard = document.getElementById('score-card');
+        const scoreDisplay = document.getElementById('score');
+        const totalQuestionsDisplay = document.getElementById('total-questions');
+        const restartButton = document.getElementById('restart-button');
+
+        function selectRandomQuestions() {
+            const shuffled = [...questions].sort(() => 0.5 - Math.random());
+            selectedQuestions = shuffled.slice(0, 10); // Select 10 random questions
+        }
+
+        function displayQuestion() {
+            if (currentQuestionIndex < selectedQuestions.length) {
+                const q = selectedQuestions[currentQuestionIndex];
+                questionText.textContent = `Question ${currentQuestionIndex + 1}: ${q.question}`;
+                optionsContainer.innerHTML = '';
+                q.options.forEach(option => {
+                    const button = document.createElement('button');
+                    button.textContent = option;
+                    button.classList.add('option-button');
+                    button.onclick = () => selectOption(option, q.answer);
+                    optionsContainer.appendChild(button);
+                });
+                nextButton.style.display = 'none'; // Hide next button until an option is selected
+            } else {
+                showScore();
+            }
+        }
+
+        function selectOption(selectedOption, correctAnswer) {
+            const optionButtons = optionsContainer.querySelectorAll('.option-button');
+            optionButtons.forEach(button => {
+                button.disabled = true; // Disable all options after selection
+                if (button.textContent === correctAnswer) {
+                    button.classList.add('correct');
+                } else if (button.textContent === selectedOption) {
+                    button.classList.add('incorrect');
+                }
+            });
+
+            if (selectedOption === correctAnswer) {
+                score++;
+            }
+            nextButton.style.display = 'block'; // Show next button
+        }
+
+        function showScore() {
+            quizContainer.style.display = 'none';
+            scoreCard.style.display = 'block';
+            scoreDisplay.textContent = score;
+            totalQuestionsDisplay.textContent = selectedQuestions.length;
+        }
+
+        function restartQuiz() {
+            currentQuestionIndex = 0;
+            score = 0;
+            selectRandomQuestions();
+            quizContainer.style.display = 'block';
+            scoreCard.style.display = 'none';
+            displayQuestion();
+        }
+
+        nextButton.onclick = () => {
+            currentQuestionIndex++;
+            displayQuestion();
+        };
+
+        restartButton.onclick = restartQuiz;
+
+        // Initialize quiz
+        selectRandomQuestions();
+        displayQuestion();
+    </script>
+</body>
+</html>

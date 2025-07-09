@@ -1,0 +1,77 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EIGRP Metrics and K-values - Networking Essentials</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <a href="/" class="logo">Networking Essentials</a>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="/index.html" class="nav-link">Home</a></li>
+                    <li><a href="/blogs.html" class="nav-link">Blogs</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link">Tools</a>
+                        <div class="dropdown-content">
+                            <a href="/tests.html" class="dropdown-link">Tests</a>
+                            <a href="/ascalc.html" class="dropdown-link">AS Calculator</a>
+                            <a href="/ip_address.html" class="dropdown-link">IP Calculator</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link active">Labs</a>
+                        <div class="dropdown-content">
+                            <a href="/labs/eigrp.html" class="dropdown-link">EIGRP</a>
+                            <a href="/labs/ospf.html" class="dropdown-link">OSPF</a>
+                            <a href="/labs/rip.html" class="dropdown-link">RIP</a>
+                            <a href="/labs/bgp.html" class="dropdown-link">BGP</a>
+                        </div>
+                    </li>
+                </ul>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="content-section fade-in">
+            <h1>EIGRP Metrics and K-values</h1>
+            <div class="content-card">
+                <p>EIGRP uses a composite metric to determine the best path to a destination. This metric is calculated using several K-values (K1 to K5), which represent different parameters:</p>
+                <ul>
+                    <li><strong>Bandwidth (K1):</strong> The slowest bandwidth along the path.</li>
+                    <li><strong>Delay (K3):</strong> The cumulative interface delay along the path.</li>
+                    <li><strong>Reliability (K2):</strong> A measure of the link's reliability.</li>
+                    <li><strong>Load (K4):</strong> The current load on the link.</li>
+                    <li><strong>MTU (K5):</strong> Minimum Transmission Unit (not used in metric calculation by default, but carried in updates).</li>
+                </ul>
+                <p>The default EIGRP metric formula is:</p>
+                <pre><code>Metric = 256 * (Bandwidth + Delay)</code></pre>
+                <p>Where:</p>
+                <ul>
+                    <li>Bandwidth is (10^7 / minimum bandwidth in Kbps)</li>
+                    <li>Delay is (cumulative delay in microseconds / 10)</li>
+                </ul>
+                <p>By default, K2, K4, and K5 are set to 0, meaning reliability, load, and MTU are not considered in the metric calculation. These values can be changed, but it's generally not recommended as it can lead to routing inconsistencies.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Networking Essentials. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../../theme.js"></script>
+</body>
+</html>

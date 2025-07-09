@@ -1,0 +1,77 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RIP Authentication - Networking Essentials</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <a href="/" class="logo">Networking Essentials</a>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="/index.html" class="nav-link">Home</a></li>
+                    <li><a href="/blogs.html" class="nav-link">Blogs</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link">Tools</a>
+                        <div class="dropdown-content">
+                            <a href="/tests.html" class="dropdown-link">Tests</a>
+                            <a href="/ascalc.html" class="dropdown-link">AS Calculator</a>
+                            <a href="/ip_address.html" class="dropdown-link">IP Calculator</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link active">Labs</a>
+                        <div class="dropdown-content">
+                            <a href="/labs/eigrp.html" class="dropdown-link">EIGRP</a>
+                            <a href="/labs/ospf.html" class="dropdown-link">OSPF</a>
+                            <a href="/labs/rip.html" class="dropdown-link">RIP</a>
+                            <a href="/labs/bgp.html" class="dropdown-link">BGP</a>
+                        </div>
+                    </li>
+                </ul>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="content-section fade-in">
+            <h1>RIP Authentication</h1>
+            <div class="content-card">
+                <p>RIP supports authentication to secure routing updates and prevent unauthorized routers from participating in the routing domain. Both plain text and MD5 authentication are available, with MD5 being the more secure option.</p>
+                <h3>MD5 Authentication Configuration:</h3>
+                <pre><code>Router(config)# key chain &lt;key-chain-name&gt;
+Router(config-keychain)# key 1
+Router(config-keychain-key)# key-string &lt;password&gt;
+Router(config-keychain-key)# exit
+Router(config-if)# ip rip authentication mode md5
+Router(config-if)# ip rip authentication key-chain &lt;key-chain-name&gt;</code></pre>
+                <ul>
+                    <li><code>key chain &lt;key-chain-name&gt;</code>: Creates a key chain to store authentication keys.</li>
+                    <li><code>key 1</code>: Defines a key number within the key chain. Multiple keys can be defined for key rotation.</li>
+                    <li><code>key-string &lt;password&gt;</code>: Sets the password for the key.</li>
+                    <li><code>ip rip authentication mode md5</code>: Configures MD5 authentication on the interface.</li>
+                    <li><code>ip rip authentication key-chain &lt;key-chain-name&gt;</code>: Applies the created key chain to the interface.</li>
+                </ul>
+                <p>It is crucial that the key chain name, key number, and key string match on all neighboring routers for authentication to succeed.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Networking Essentials. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../../theme.js"></script>
+</body>
+</html>

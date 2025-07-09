@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "Cisco Commands Reference",
+            "description": "Comprehensive guide to essential Cisco IOS commands for network configuration and troubleshooting.",
+            "provider": {
+              "@type": "Organization",
+              "name": "Networking Essentials"
+            },
+            "url": "https://networkingessentials.in/cisco_commands.html"
+        }
+    </script>
+    <title>Cisco Commands Reference - Networking Essentials</title>
+    <meta name="description" content="Learn essential Cisco IOS commands for network configuration and troubleshooting.">
+    <meta name="keywords" content="cisco commands, IOS commands, network configuration, cisco reference, networking tools">
+    <meta name="author" content="Networking Essentials">
+    <meta name="robots" content="index, follow">
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="theme.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <a href="/" class="logo">Networking Essentials</a>
+            <button class="mobile-menu-toggle" aria-label="Open navigation menu" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="/index.html" class="nav-link">Home</a></li>
+                    <li><a href="/blogs.html" class="nav-link">Blogs</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link dropdown-toggle">Tools</a>
+                        <ul class="dropdown-content">
+                            <li><a href="/tests.html" class="dropdown-link">Tests</a></li>
+                            <li><a href="/ascalc.html" class="dropdown-link">AS Calculator</a></li>
+                            <li><a href="/ip_address.html" class="dropdown-link">IP Calculator</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link dropdown-toggle">Labs</a>
+                        <ul class="dropdown-content">
+                            <li><a href="/labs/eigrp.html" class="dropdown-link">EIGRP</a></li>
+                            <li><a href="/labs/ospf.html" class="dropdown-link">OSPF</a></li>
+                            <li><a href="/labs/rip.html" class="dropdown-link">RIP</a></li>
+                            <li><a href="/labs/bgp.html" class="dropdown-link">BGP</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="welcome-section fade-in">
+            <h1>Cisco Commands Reference</h1>
+            <p>A comprehensive guide to essential Cisco IOS commands for network configuration and troubleshooting.</p>
+        </section>
+
+        <div class="menu-grid fade-in">
+            <div class="menu-item">
+                <h3>Basic Configuration</h3>
+                <div class="command-group">
+                    <pre><code>enable
+config terminal
+hostname [name]
+enable secret [password]
+line console 0
+password [password]
+login
+line vty 0 4
+password [password]
+login
+service password-encryption</code></pre>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <h3>Interface Configuration</h3>
+                <div class="command-group">
+                    <pre><code>interface [type][number]
+ip address [ip-address] [subnet-mask]
+no shutdown
+description [text]
+speed [10|100|1000|auto]
+duplex [half|full|auto]</code></pre>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <h3>Static Routing</h3>
+                <div class="command-group">
+                    <pre><code>ip route [destination_network] [subnet_mask] [next_hop_address|exit_interface]
+ip route 0.0.0.0 0.0.0.0 [next_hop_address] # Default route</code></pre>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <h3>Dynamic Routing</h3>
+                <div class="command-group">
+                    <pre><code># EIGRP
+router eigrp [as-number]
+network [network-address] [wildcard-mask]
+
+# OSPF
+router ospf [process-id]
+network [network-address] [wildcard-mask] area [area-id]
+
+# BGP
+router bgp [as-number]
+neighbor [ip-address] remote-as [as-number]
+network [network-address] mask [subnet-mask]</code></pre>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <h3>VLAN Configuration</h3>
+                <div class="command-group">
+                    <pre><code>vlan [vlan-id]
+name [vlan-name]
+
+interface [interface-id]
+switchport mode access
+switchport access vlan [vlan-id]
+
+interface [interface-id]
+switchport mode trunk
+switchport trunk allowed vlan [vlan-list]</code></pre>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <h3>Security Configuration</h3>
+                <div class="command-group">
+                    <pre><code># Access Lists
+access-list [number] [permit|deny] [protocol] [source] [destination]
+ip access-group [number] [in|out]
+
+# Port Security
+switchport port-security
+switchport port-security maximum [value]
+switchport port-security mac-address [mac-address]
+switchport port-security violation [shutdown|restrict|protect]</code></pre>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            &copy; 2025 Networking Essentials. All rights reserved.
+        </div>
+    </footer>
+
+    <script src="theme.js"></script>
+</body>
+</html>

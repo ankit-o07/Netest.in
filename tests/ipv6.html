@@ -1,0 +1,259 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPv6 Fundamentals Test - Networking Hub</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <a href="/" class="logo">Networking Essentials</a>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="/index.html" class="nav-link">Home</a></li>
+                    <li><a href="/blogs.html" class="nav-link">Blogs</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link active">Tools</a>
+                        <div class="dropdown-content">
+                            <a href="/tests.html" class="dropdown-link">Tests</a>
+                            <a href="/ascalc.html" class="dropdown-link">AS Calculator</a>
+                            <a href="/ip_address.html" class="dropdown-link">IP Calculator</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link">Labs</a>
+                        <div class="dropdown-content">
+                            <a href="/labs/eigrp.html" class="dropdown-link">EIGRP</a>
+                            <a href="/labs/ospf.html" class="dropdown-link">OSPF</a>
+                            <a href="/labs/rip.html" class="dropdown-link">RIP</a>
+                            <a href="/labs/bgp.html" class="dropdown-link">BGP</a>
+                        </div>
+                    </li>
+                </ul>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="welcome-section fade-in">
+            <h1>IPv6 Fundamentals Test</h1>
+            <p>This test explores the next generation of IP addressing.</p>
+        </section>
+
+        <section class="content-section fade-in">
+            <div id="quiz-container">
+                <div id="question-display">
+                    <h2 id="question-text"></h2>
+                    <div id="options-container"></div>
+                </div>
+                <button id="next-button">Next Question</button>
+            </div>
+            <div id="score-card" style="display:none;">
+                <h2>Quiz Complete!</h2>
+                <p>Your score: <span id="score"></span> / <span id="total-questions"></span></p>
+                <button id="restart-button">Restart Quiz</button>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Networking Essentials. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../theme.js"></script>
+    <script>
+        const questions = [
+            {
+                question: "How many bits are in an IPv6 address?",
+                options: ["32 bits", "64 bits", "128 bits", "256 bits"],
+                answer: "128 bits"
+            },
+            {
+                question: "Which of the following is the loopback address in IPv6?",
+                options: ["::1", "127.0.0.1", "FE80::1", "2001:DB8::1"],
+                answer: "::1"
+            },
+            {
+                question: "What is the purpose of Neighbor Discovery Protocol (NDP) in IPv6?",
+                options: ["To resolve IP addresses to MAC addresses", "To assign IP addresses dynamically", "To discover other devices on the local link", "To route packets between networks"],
+                answer: "To discover other devices on the local link"
+            },
+            {
+                question: "Which type of IPv6 address is used for communication within a single subnet?",
+                options: ["Global Unicast Address", "Link-Local Address", "Unique Local Address", "Multicast Address"],
+                answer: "Link-Local Address"
+            },
+            {
+                question: "What is the IPv6 equivalent of ARP?",
+                options: ["ICMPv6", "NDP", "DHCPv6", "DNS"],
+                answer: "NDP"
+            },
+            {
+                question: "Which mechanism allows IPv6 packets to be encapsulated within IPv4 packets for transmission over an IPv4 network?",
+                options: ["Dual Stack", "Tunneling", "Translation", "NAT64"],
+                answer: "Tunneling"
+            },
+            {
+                question: "What is the prefix length for a link-local IPv6 address?",
+                options: ["/10", "/48", "/64", "/128"],
+                answer: "/64"
+            },
+            {
+                question: "Which IPv6 address type is used for one-to-many communication?",
+                options: ["Unicast", "Anycast", "Multicast", "Broadcast"],
+                answer: "Multicast"
+            },
+            {
+                question: "What is Stateless Address Autoconfiguration (SLAAC) in IPv6?",
+                options: ["A method for manually assigning IPv6 addresses", "A method for dynamically assigning IPv6 addresses without a DHCP server", "A method for translating IPv4 to IPv6 addresses", "A method for securing IPv6 communication"],
+                answer: "A method for dynamically assigning IPv6 addresses without a DHCP server"
+            },
+            {
+                question: "Which of the following is a valid compressed IPv6 address?",
+                options: ["2001:0DB8:0000:0000:0000:0000:0000:0001", "2001:DB8::1", "2001:DB8:0:0:0:0:0:1", "2001:DB8:0000::1"],
+                answer: "2001:DB8::1"
+            },
+            {
+                question: "What is the purpose of the '::' notation in IPv6?",
+                options: ["To represent a single zero segment", "To represent one or more consecutive 16-bit segments of zeros", "To represent a broadcast address", "To represent a multicast address"],
+                answer: "To represent one or more consecutive 16-bit segments of zeros"
+            },
+            {
+                question: "Which protocol is used by IPv6 routers to advertise their presence and configuration parameters?",
+                options: ["Router Solicitation", "Router Advertisement", "Neighbor Solicitation", "Neighbor Advertisement"],
+                answer: "Router Advertisement"
+            },
+            {
+                question: "What is the IPv6 equivalent of NAT?",
+                options: ["NAT64", "NPTv6", "PAT", "Proxy"],
+                answer: "NPTv6"
+            },
+            {
+                question: "Which of the following is a unique local IPv6 address prefix?",
+                options: ["FC00::/7", "FE80::/10", "2000::/3", "FF00::/8"],
+                answer: "FC00::/7"
+            },
+            {
+                question: "What is the maximum transmission unit (MTU) for IPv6?",
+                options: ["1280 bytes", "1500 bytes", "4096 bytes", "65535 bytes"],
+                answer: "1280 bytes"
+            },
+            {
+                question: "Which IPv6 extension header is used for fragmentation?",
+                options: ["Hop-by-Hop Options", "Routing Header", "Fragment Header", "Destination Options"],
+                answer: "Fragment Header"
+            },
+            {
+                question: "What is the purpose of the IPv6 flow label?",
+                options: ["To identify a sequence of packets that require special handling by routers", "To indicate the source and destination of a packet", "To specify the maximum hop limit", "To provide security for the packet"],
+                answer: "To identify a sequence of packets that require special handling by routers"
+            },
+            {
+                question: "Which of the following is a valid IPv6 multicast address?",
+                options: ["FF02::1", "2001:DB8::1", "FE80::1", "::1"],
+                answer: "FF02::1"
+            },
+            {
+                question: "What is the IPv6 address for all nodes on the local link?",
+                options: ["FF02::1", "FF02::2", "FF02::5", "FF02::6"],
+                answer: "FF02::1"
+            },
+            {
+                question: "Which command is used to display IPv6 interface information on a Cisco router?",
+                options: ["show ip interface brief", "show ipv6 interface brief", "show ip route", "show ipv6 route"],
+                answer: "show ipv6 interface brief"
+            }
+        ];
+
+        let selectedQuestions = [];
+        let currentQuestionIndex = 0;
+        let score = 0;
+
+        const quizContainer = document.getElementById('quiz-container');
+        const questionText = document.getElementById('question-text');
+        const optionsContainer = document.getElementById('options-container');
+        const nextButton = document.getElementById('next-button');
+        const scoreCard = document.getElementById('score-card');
+        const scoreDisplay = document.getElementById('score');
+        const totalQuestionsDisplay = document.getElementById('total-questions');
+        const restartButton = document.getElementById('restart-button');
+
+        function selectRandomQuestions() {
+            const shuffled = [...questions].sort(() => 0.5 - Math.random());
+            selectedQuestions = shuffled.slice(0, 10); // Select 10 random questions
+        }
+
+        function displayQuestion() {
+            if (currentQuestionIndex < selectedQuestions.length) {
+                const q = selectedQuestions[currentQuestionIndex];
+                questionText.textContent = `Question ${currentQuestionIndex + 1}: ${q.question}`;
+                optionsContainer.innerHTML = '';
+                q.options.forEach(option => {
+                    const button = document.createElement('button');
+                    button.textContent = option;
+                    button.classList.add('option-button');
+                    button.onclick = () => selectOption(option, q.answer);
+                    optionsContainer.appendChild(button);
+                });
+                nextButton.style.display = 'none'; // Hide next button until an option is selected
+            } else {
+                showScore();
+            }
+        }
+
+        function selectOption(selectedOption, correctAnswer) {
+            const optionButtons = optionsContainer.querySelectorAll('.option-button');
+            optionButtons.forEach(button => {
+                button.disabled = true; // Disable all options after selection
+                if (button.textContent === correctAnswer) {
+                    button.classList.add('correct');
+                } else if (button.textContent === selectedOption) {
+                    button.classList.add('incorrect');
+                }
+            });
+
+            if (selectedOption === correctAnswer) {
+                score++;
+            }
+            nextButton.style.display = 'block'; // Show next button
+        }
+
+        function showScore() {
+            quizContainer.style.display = 'none';
+            scoreCard.style.display = 'block';
+            scoreDisplay.textContent = score;
+            totalQuestionsDisplay.textContent = selectedQuestions.length;
+        }
+
+        function restartQuiz() {
+            currentQuestionIndex = 0;
+            score = 0;
+            selectRandomQuestions();
+            quizContainer.style.display = 'block';
+            scoreCard.style.display = 'none';
+            displayQuestion();
+        }
+
+        nextButton.onclick = () => {
+            currentQuestionIndex++;
+            displayQuestion();
+        };
+
+        restartButton.onclick = restartQuiz;
+
+        // Initialize quiz
+        selectRandomQuestions();
+        displayQuestion();
+    </script>
+</body>
+</html>

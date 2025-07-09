@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Networking Essentials - Your comprehensive hub for networking resources, tutorials, and tools">
+    <title>Networking Essentials : Networking Hub - Home</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <a href="/" class="logo">Networking Essentials</a>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="/index.html" class="nav-link active">Home</a></li>
+                    <li><a href="/blogs.html" class="nav-link">Blogs</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link">Tools</a>
+                        <div class="dropdown-content">
+                            <a href="/tests.html" class="dropdown-link">Tests</a>
+                            <a href="/ascalc.html" class="dropdown-link">AS Calculator</a>
+                            <a href="/ip_address.html" class="dropdown-link">IP Calculator</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link">Labs</a>
+                        <div class="dropdown-content">
+                            <a href="/labs/eigrp.html" class="dropdown-link">EIGRP</a>
+                            <a href="/labs/ospf.html" class="dropdown-link">OSPF</a>
+                            <a href="/labs/rip.html" class="dropdown-link">RIP</a>
+                            <a href="/labs/bgp.html" class="dropdown-link">BGP</a>
+                        </div>
+                    </li>
+                </ul>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="welcome-section">
+            <h1>Welcome to Networking Essentials</h1>
+            <p>Your comprehensive hub for networking resources, tutorials, and tools</p>
+        </section>
+
+        <section class="menu-grid">
+            <div class="menu-item">
+                <h3>IP Calculator</h3>
+                <p>Calculate subnets, network addresses, and more with our easy-to-use tool.</p>
+                <a href="/ip_address.html">Try it now <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="menu-item">
+                <h3>Practice Tests</h3>
+                <p>Test your networking knowledge with our comprehensive quiz collection.</p>
+                <a href="/tests.html">Start learning <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="menu-item">
+                <h3>Cisco Commands</h3>
+                <p>Learn essential Cisco IOS commands for network configuration.</p>
+                <a href="/cisco_commands.html">View commands <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="menu-item">
+                <h3>EIGRP Lab</h3>
+                <p>Hands-on practice with Enhanced Interior Gateway Routing Protocol.</p>
+                <a href="/labs/eigrp.html">Start lab <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="menu-item">
+                <h3>OSPF Lab</h3>
+                <p>Master Open Shortest Path First routing with practical examples.</p>
+                <a href="/labs/ospf.html">Start lab <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="menu-item">
+                <h3>Blog Articles</h3>
+                <p>Read our latest articles on networking concepts and best practices.</p>
+                <a href="/blogs.html">Read more <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Networking Essentials. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="theme.js"></script>
+</body>
+</html>

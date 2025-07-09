@@ -1,0 +1,77 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EIGRP DUAL Algorithm - Networking Essentials</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <a href="/" class="logo">Networking Essentials</a>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="/index.html" class="nav-link">Home</a></li>
+                    <li><a href="/blogs.html" class="nav-link">Blogs</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link">Tools</a>
+                        <div class="dropdown-content">
+                            <a href="/tests.html" class="dropdown-link">Tests</a>
+                            <a href="/ascalc.html" class="dropdown-link">AS Calculator</a>
+                            <a href="/ip_address.html" class="dropdown-link">IP Calculator</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link active">Labs</a>
+                        <div class="dropdown-content">
+                            <a href="/labs/eigrp.html" class="dropdown-link">EIGRP</a>
+                            <a href="/labs/ospf.html" class="dropdown-link">OSPF</a>
+                            <a href="/labs/rip.html" class="dropdown-link">RIP</a>
+                            <a href="/labs/bgp.html" class="dropdown-link">BGP</a>
+                        </div>
+                    </li>
+                </ul>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="content-section fade-in">
+            <h1>DUAL Algorithm</h1>
+            <div class="content-card">
+                <p>The Diffusing Update Algorithm (DUAL) is the core of EIGRP's rapid convergence and loop-free operation. DUAL ensures that all routes calculated are loop-free and allows for quick re-convergence when a primary path fails.</p>
+                <h3>Key Concepts in DUAL:</h3>
+                <ul>
+                    <li><strong>Feasible Distance (FD):</strong> The best metric from the local router to the destination network. This is the metric of the successor route.</li>
+                    <li><strong>Advertised Distance (AD) / Reported Distance (RD):</strong> The metric advertised by a neighbor to reach a destination network.</li>
+                    <li><strong>Successor:</strong> The next-hop router for the best path to a destination. The successor route is stored in the routing table.</li>
+                    <li><strong>Feasible Successor (FS):</strong> A backup path to a destination that is guaranteed to be loop-free. A neighbor can be a feasible successor if its Advertised Distance to the destination is less than the local router's Feasible Distance to the same destination.</li>
+                </ul>
+                <h3>DUAL Operation:</h3>
+                <ol>
+                    <li><strong>Passive State:</strong> When a router has a stable route (successor) and potentially a feasible successor, it is in a passive state for that route.</li>
+                    <li><strong>Active State:</strong> If the successor route fails and there is no feasible successor available, the router enters an active state for that route. It sends queries to its neighbors to find a new path.</li>
+                    <li><strong>Queries and Replies:</strong> Neighbors respond to queries with their best paths to the destination. If a neighbor doesn't have a path, it queries its own neighbors. This diffusion process continues until a new path is found or it's determined that the network is unreachable.</li>
+                    <li><strong>Convergence:</strong> Once a new path is found (either directly or through a query/reply process), the router updates its routing table and returns to a passive state.</li>
+                </ol>
+                <p>The ability of DUAL to pre-calculate backup paths (feasible successors) significantly reduces convergence time, as the router doesn't need to re-calculate a path from scratch when the primary path fails.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Networking Essentials. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../../theme.js"></script>
+</body>
+</html>

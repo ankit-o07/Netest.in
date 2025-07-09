@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSPFv3 for IPv6 - Networking Essentials</title>
+    <meta name="description" content="Configuring and understanding OSPFv3 for IPv6 networks.">
+    <meta name="keywords" content="OSPFv3, IPv6, OSPF for IPv6, link-local address">
+    <meta name="author" content="Networking Essentials">
+    <meta name="robots" content="index, follow">
+    <link rel="stylesheet" href="../../styles.css">
+    <script defer src="../../theme.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <a href="/" class="logo">Networking Essentials</a>
+            <button class="mobile-menu-toggle" aria-label="Open navigation menu" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="/index.html" class="nav-link">Home</a></li>
+                    <li><a href="/blogs.html" class="nav-link">Blogs</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link dropdown-toggle">Tools</a>
+                        <ul class="dropdown-content">
+                            <li><a href="/tests.html" class="dropdown-link">Tests</a></li>
+                            <li><a href="/ascalc.html" class="dropdown-link">AS Calculator</a></li>
+                            <li><a href="/ip_address.html" class="dropdown-link">IP Calculator</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link dropdown-toggle">Labs</a>
+                        <ul class="dropdown-content">
+                            <li><a href="/labs/eigrp.html" class="dropdown-link">EIGRP</a></li>
+                            <li><a href="/labs/ospf.html" class="dropdown-link active">OSPF</a></li>
+                            <li><a href="/labs/rip.html" class="dropdown-link">RIP</a></li>
+                            <li><a href="/labs/bgp.html" class="dropdown-link">BGP</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="welcome-section fade-in">
+            <h1>OSPFv3 for IPv6</h1>
+            <p>OSPFv3 is the version of OSPF designed to support IPv6. Unlike OSPFv2, OSPFv3 runs directly over IPv6 and does not rely on IPv4 addresses for its operation, although it can still use IPv4 for router IDs.</p>
+        </section>
+        <section class="content-section fade-in">
+            <div class="content-card">
+                <h3>Key Differences from OSPFv2:</h3>
+                <ul>
+                    <li><strong>Address Family Independent:</strong> OSPFv3 separates the routing protocol from the address family, allowing it to carry routes for both IPv4 and IPv6 (though typically used for IPv6).</li>
+                    <li><strong>Link-Local Addresses:</strong> OSPFv3 uses IPv6 link-local addresses for neighbor discovery and adjacency formation.</li>
+                    <li><strong>Authentication:</strong> Authentication is no longer part of OSPFv3 itself but relies on IPv6's IPsec.</li>
+                    <li><strong>Router ID:</strong> Still uses a 32-bit number for the Router ID, typically an IPv4 address or manually configured.</li>
+                </ul>
+                <h3>Configuration Example:</h3>
+                <pre><code>ipv6 unicast-routing
+interface GigabitEthernet0/0
+ ipv6 enable
+ ipv6 ospf 1 area 0
+router ospf 1
+ router-id 1.1.1.1</code></pre>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">&copy; 2025 Networking Essentials. All rights reserved.</div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            "name": "Networking Essentials",
+            "description": "Calculate and convert Autonomous System (AS) numbers between decimal, hexadecimal, and ASPLAIN formats.",
+            "applicationCategory": "NetworkingTool",
+            "provider": {
+              "@type": "Organization",
+              "name": "Networking Essentials"
+            },
+            "url": "https://networkingessentials.in/ascalc.html"
+        }
+    </script>
+    <title>AS Number Calculator - Networking Essentials</title>
+    <meta name="description" content="Convert and calculate Autonomous System (AS) numbers between different formats with our easy-to-use calculator.">
+    <meta name="keywords" content="AS number calculator, autonomous system, BGP AS, ASPLAIN converter, networking tools">
+    <meta name="author" content="Networking Essentials">
+    <meta name="robots" content="index, follow">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <a href="/" class="logo">Networking Essentials</a>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="/index.html" class="nav-link">Home</a></li>
+                    <li><a href="/blogs.html" class="nav-link">Blogs</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link">Tools</a>
+                        <div class="dropdown-content">
+                            <a href="/tests.html" class="dropdown-link">Tests</a>
+                            <a href="/ascalc.html" class="dropdown-link active">AS Calculator</a>
+                            <a href="/ip_address.html" class="dropdown-link">IP Calculator</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link">Labs</a>
+                        <div class="dropdown-content">
+                            <a href="/labs/eigrp.html" class="dropdown-link">EIGRP</a>
+                            <a href="/labs/ospf.html" class="dropdown-link">OSPF</a>
+                            <a href="/labs/rip.html" class="dropdown-link">RIP</a>
+                            <a href="/labs/bgp.html" class="dropdown-link">BGP</a>
+                        </div>
+                    </li>
+                </ul>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="welcome-section fade-in">
+            <h1>AS Number Calculator</h1>
+            <p>Convert Autonomous System (AS) numbers between decimal, hexadecimal, and ASPLAIN formats. Essential for BGP configuration and troubleshooting.</p>
+        </section>
+
+        <section class="menu-grid fade-in">
+            <div class="menu-item">
+                <div class="calculator-form">
+                    <div class="input-group">
+                    <div class="calculator-form">
+                        <div class="input-group">
+                            <label for="asInput">Enter AS Number:</label>
+                            <input type="text" id="asInput" placeholder="e.g., 65000 or 1.10">
+                        </div>
+                        <div class="input-group">
+                            <label>Input Format:</label>
+                            <div class="radio-group">
+                                <label>
+                                    <input type="radio" name="inputFormat" value="decimal" checked>
+                                    Decimal
+                                </label>
+                                <label>
+                                    <input type="radio" name="inputFormat" value="asdot">
+                                    ASDOT
+                                </label>
+                                <label>
+                                    <input type="radio" name="inputFormat" value="hex">
+                                    Hexadecimal
+                                </label>
+                            </div>
+                        </div>
+                        <button id="convertBtn" class="primary-button">Convert</button>
+                    </div>
+
+                    <div class="results-container">
+                        <h3>Results</h3>
+                        <div class="result-group">
+                            <label>Decimal (ASPLAIN):</label>
+                            <span id="decimalResult">-</span>
+                        </div>
+                        <div class="result-group">
+                            <label>ASDOT Format:</label>
+                            <span id="asdotResult">-</span>
+                        </div>
+                        <div class="result-group">
+                            <label>Hexadecimal:</label>
+                            <span id="hexResult">-</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-section fade-in">
+                <h2>About AS Numbers</h2>
+                <div class="content-card">
+                    <div class="feature-list">
+                        <h3>Key Points:</h3>
+                        <ul>
+                            <li><i class="fas fa-info-circle"></i> <strong>Range:</strong> 16-bit AS numbers: 0-65535, 32-bit AS numbers: 0-4294967295</li>
+                            <li><i class="fas fa-code"></i> <strong>Formats:</strong> ASPLAIN (decimal), ASDOT (X.Y notation), and hexadecimal</li>
+                            <li><i class="fas fa-network-wired"></i> <strong>Usage:</strong> Identifies autonomous systems in BGP routing</li>
+                            <li><i class="fas fa-shield-alt"></i> <strong>Private Range:</strong> 64512-65534 (16-bit) and 4200000000-4294967294 (32-bit)</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Networking Essentials. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="theme.js"></script>
+    <script>
+        document.getElementById('convertBtn').addEventListener('click', function() {
+            const input = document.getElementById('asInput').value;
+            const format = document.querySelector('input[name="inputFormat"]:checked').value;
+            let decimal, asdot, hex;
+
+            try {
+                if (format === 'decimal') {
+                    decimal = parseInt(input);
+                } else if (format === 'asdot') {
+                    const parts = input.split('.');
+                    if (parts.length !== 2) throw new Error('Invalid ASDOT format');
+                    decimal = (parseInt(parts[0]) << 16) + parseInt(parts[1]);
+                } else { // hex
+                    decimal = parseInt(input, 16);
+                }
+
+                if (isNaN(decimal) || decimal < 0 || decimal > 4294967295) {
+                    throw new Error('Invalid AS number');
+                }
+
+                // Convert to ASDOT
+                const high = Math.floor(decimal / 65536);
+                const low = decimal % 65536;
+                asdot = high + '.' + low;
+
+                // Convert to hex
+                hex = decimal.toString(16).toUpperCase();
+
+                // Display results
+                document.getElementById('decimalResult').textContent = decimal;
+                document.getElementById('asdotResult').textContent = asdot;
+                document.getElementById('hexResult').textContent = hex;
+            } catch (error) {
+                alert('Invalid input: ' + error.message);
+            }
+        });
+    </script>
+</body>
+</html>
