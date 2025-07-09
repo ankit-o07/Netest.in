@@ -12,31 +12,29 @@
     <header class="header">
         <div class="header-container">
             <a href="/" class="logo">Networking Essentials</a>
-            <div class="menu-toggle" id="mobile-menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
             <nav class="main-nav">
                 <ul class="nav-list">
                     <li><a href="/index.html" class="nav-link active">Home</a></li>
                     <li><a href="/blogs.html" class="nav-link">Blogs</a></li>
                     <li class="dropdown">
                         <a href="#" class="nav-link">Tools</a>
-                        <div class="dropdown-content">
-                            <a href="/tests.html" class="dropdown-link">Tests</a>
-                            <a href="/ascalc.html" class="dropdown-link">AS Calculator</a>
-                            <a href="/ip_address.html" class="dropdown-link">IP Calculator</a>
-                        </div>
+                        <ul class="dropdown-content">
+                            <li><a href="/tests.html" class="dropdown-link">Tests</a></li>
+                            <li><a href="/ascalc.html" class="dropdown-link">AS Calculator</a></li>
+                            <li><a href="/ip_address.html" class="dropdown-link">IP Calculator</a></li>
+                        </ul>
                     </li>
                     <li class="dropdown">
                         <a href="#" class="nav-link">Labs</a>
-                        <div class="dropdown-content">
-                            <a href="/labs/eigrp.html" class="dropdown-link">EIGRP</a>
-                            <a href="/labs/ospf.html" class="dropdown-link">OSPF</a>
-                            <a href="/labs/rip.html" class="dropdown-link">RIP</a>
-                            <a href="/labs/bgp.html" class="dropdown-link">BGP</a>
-                        </div>
+                        <ul class="dropdown-content">
+                            <li><a href="/labs/eigrp.html" class="dropdown-link">EIGRP</a></li>
+                            <li><a href="/labs/ospf.html" class="dropdown-link">OSPF</a></li>
+                            <li><a href="/labs/rip.html" class="dropdown-link">RIP</a></li>
+                            <li><a href="/labs/bgp.html" class="dropdown-link">BGP</a></li>
+                        </ul>
                     </li>
                 </ul>
                 <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
