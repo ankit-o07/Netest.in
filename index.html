@@ -7,6 +7,8 @@
     <title>Networking Essentials : Networking Hub - Home</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
 <body>
     <header class="header">
@@ -44,49 +46,143 @@
         </div>
     </header>
 
-    <main class="main-content">
-        <section class="welcome-section">
-            <h1>Welcome to Networking Essentials</h1>
-            <p>Your comprehensive hub for networking resources, tutorials, and tools</p>
-        </section>
+    <!-- Header Ad Banner -->
+    <div class="ad-banner">
+        <div>📢 Advertisement Space - Header Banner (728x90)</div>
+    </div>
 
-        <section class="menu-grid">
-            <div class="menu-item">
-                <h3>IP Calculator</h3>
-                <p>Calculate subnets, network addresses, and more with our easy-to-use tool.</p>
-                <a href="/ip_address.html">Try it now <i class="fas fa-arrow-right"></i></a>
+    <div class="main-container">
+        <main class="main-content">
+            <section class="welcome-section fade-in">
+                <h1>Welcome to Networking Essentials</h1>
+                <p>Your comprehensive hub for networking resources, tutorials, and tools. Master networking concepts with our interactive labs, practice tests, and expert guides.</p>
+            </section>
+
+            <!-- Inline Ad -->
+            <div class="ad-inline">
+                <div>📢 Advertisement Space - Inline Banner (468x60)</div>
             </div>
-            <div class="menu-item">
-                <h3>Practice Tests</h3>
-                <p>Test your networking knowledge with our comprehensive quiz collection.</p>
-                <a href="/tests.html">Start learning <i class="fas fa-arrow-right"></i></a>
+
+            <section class="menu-grid fade-in">
+                <div class="menu-item">
+                    <i class="fas fa-calculator" style="font-size: 2rem; color: var(--primary-color); margin-bottom: 1rem;"></i>
+                    <h3>IP Calculator</h3>
+                    <p>Calculate subnets, network addresses, and more with our advanced IP calculator tool. Perfect for network planning and troubleshooting.</p>
+                    <a href="/ip_address.html" class="btn btn-primary">Try Calculator <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="menu-item">
+                    <i class="fas fa-tasks" style="font-size: 2rem; color: var(--accent-color); margin-bottom: 1rem;"></i>
+                    <h3>Practice Tests</h3>
+                    <p>Test your networking knowledge with our comprehensive quiz collection. Prepare for CCNA, CCNP, and other certifications.</p>
+                    <a href="/tests.html" class="btn btn-primary">Start Learning <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="menu-item">
+                    <i class="fas fa-terminal" style="font-size: 2rem; color: var(--success-color); margin-bottom: 1rem;"></i>
+                    <h3>Cisco Commands</h3>
+                    <p>Learn essential Cisco IOS commands for network configuration. Complete reference guide with examples and explanations.</p>
+                    <a href="/cisco_commands.html" class="btn btn-primary">View Commands <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="menu-item">
+                    <i class="fas fa-network-wired" style="font-size: 2rem; color: var(--info-color); margin-bottom: 1rem;"></i>
+                    <h3>EIGRP Lab</h3>
+                    <p>Hands-on practice with Enhanced Interior Gateway Routing Protocol. Learn configuration, troubleshooting, and best practices.</p>
+                    <a href="/labs/eigrp.html" class="btn btn-primary">Start Lab <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="menu-item">
+                    <i class="fas fa-project-diagram" style="font-size: 2rem; color: var(--warning-color); margin-bottom: 1rem;"></i>
+                    <h3>OSPF Lab</h3>
+                    <p>Master Open Shortest Path First routing with practical examples. Comprehensive guide for CCNP ENARSI preparation.</p>
+                    <a href="/labs/ospf.html" class="btn btn-primary">Start Lab <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="menu-item">
+                    <i class="fas fa-book-open" style="font-size: 2rem; color: var(--secondary-color); margin-bottom: 1rem;"></i>
+                    <h3>Blog Articles</h3>
+                    <p>Read our latest articles on networking concepts and best practices. Expert insights and tutorials for all skill levels.</p>
+                    <a href="/blogs.html" class="btn btn-primary">Read More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </section>
+
+            <!-- Another Inline Ad -->
+            <div class="ad-inline">
+                <div>📢 Advertisement Space - Content Banner (728x90)</div>
             </div>
-            <div class="menu-item">
-                <h3>Cisco Commands</h3>
-                <p>Learn essential Cisco IOS commands for network configuration.</p>
-                <a href="/cisco_commands.html">View commands <i class="fas fa-arrow-right"></i></a>
+
+            <section class="content-card fade-in">
+                <h3>🚀 Featured Resources</h3>
+                <div class="feature-list">
+                    <ul>
+                        <li>
+                            <i class="fas fa-graduation-cap"></i>
+                            <div>
+                                <strong>Certification Prep</strong>
+                                <p>Comprehensive study materials for CCNA, CCNP, and other networking certifications</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-code"></i>
+                            <div>
+                                <strong>Hands-on Labs</strong>
+                                <p>Interactive labs covering routing protocols, switching concepts, and network security</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-tools"></i>
+                            <div>
+                                <strong>Network Tools</strong>
+                                <p>Professional-grade calculators and utilities for network planning and troubleshooting</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-users"></i>
+                            <div>
+                                <strong>Community Support</strong>
+                                <p>Join thousands of networking professionals sharing knowledge and best practices</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+
+        <aside class="sidebar">
+            <!-- Sidebar Ad -->
+            <div class="ad-sidebar">
+                <div>📢 Advertisement Space<br>Sidebar Banner<br>(300x250)</div>
             </div>
-            <div class="menu-item">
-                <h3>EIGRP Lab</h3>
-                <p>Hands-on practice with Enhanced Interior Gateway Routing Protocol.</p>
-                <a href="/labs/eigrp.html">Start lab <i class="fas fa-arrow-right"></i></a>
+
+            <div class="content-card">
+                <h3>🔥 Popular This Week</h3>
+                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                    <a href="/blogs/subnetting_guide.html" style="text-decoration: none; color: var(--text-secondary); padding: 0.75rem; background: var(--bg-secondary); border-radius: 0.5rem; transition: all 0.3s ease;">
+                        <strong style="color: var(--text-primary);">Subnetting Guide</strong><br>
+                        <small>Master IP subnetting in 5 easy steps</small>
+                    </a>
+                    <a href="/tests/fundamentals.html" style="text-decoration: none; color: var(--text-secondary); padding: 0.75rem; background: var(--bg-secondary); border-radius: 0.5rem; transition: all 0.3s ease;">
+                        <strong style="color: var(--text-primary);">Networking Fundamentals</strong><br>
+                        <small>Test your basic networking knowledge</small>
+                    </a>
+                    <a href="/labs/ospf.html" style="text-decoration: none; color: var(--text-secondary); padding: 0.75rem; background: var(--bg-secondary); border-radius: 0.5rem; transition: all 0.3s ease;">
+                        <strong style="color: var(--text-primary);">OSPF Configuration</strong><br>
+                        <small>Complete OSPF lab guide</small>
+                    </a>
+                </div>
             </div>
-            <div class="menu-item">
-                <h3>OSPF Lab</h3>
-                <p>Master Open Shortest Path First routing with practical examples.</p>
-                <a href="/labs/ospf.html">Start lab <i class="fas fa-arrow-right"></i></a>
+
+            <!-- Another Sidebar Ad -->
+            <div class="ad-sidebar">
+                <div>📢 Advertisement Space<br>Sidebar Banner<br>(300x600)</div>
             </div>
-            <div class="menu-item">
-                <h3>Blog Articles</h3>
-                <p>Read our latest articles on networking concepts and best practices.</p>
-                <a href="/blogs.html">Read more <i class="fas fa-arrow-right"></i></a>
-            </div>
-        </section>
-    </main>
+        </aside>
+    </div>
 
     <footer class="footer">
         <div class="footer-content">
-            <p>&copy; 2025 Networking Essentials. All rights reserved.</p>
+            <p>&copy; 2025 Networking Essentials. All rights reserved. | Empowering network professionals worldwide</p>
         </div>
     </footer>
 

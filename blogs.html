@@ -8,11 +8,9 @@
     <meta name="author" content="Networking Essentials">
     <title>Networking Blog | Networking Essentials</title>
     <link rel="stylesheet" href="styles.css">
-    <script defer src="theme.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <header class="header">
@@ -50,45 +48,183 @@
         </div>
     </header>
 
-    <main class="main-content">
-        <section class="welcome-section">
-            <h1>Networking Blog</h1>
-            <p>Welcome to the Networking Essentials Blog! Discover expert tutorials, guides, and tips on networking topics like subnetting, network testing, and router configuration. Perfect for IT professionals, network engineers, and CCNA/CCNP students.</p>
-        </section>
-        <section class="menu-grid">
-            <div class="menu-item">
-                <h3><a href="/blogs/subnetting_guide.html">Understanding Subnetting in 5 Easy Steps</a></h3>
-                <p>Learn how to divide networks into smaller subnets with this beginner-friendly guide. Master IP addressing and subnet masks.</p>
-                <p class="post-meta"><i class="far fa-calendar-alt"></i> June 2, 2025</p>
+    <!-- Header Ad Banner -->
+    <div class="ad-banner">
+        <div>📢 Advertisement Space - Header Banner (728x90)</div>
+    </div>
+
+    <div class="main-container">
+        <main class="main-content">
+            <section class="welcome-section fade-in">
+                <h1>Networking Blog</h1>
+                <p>Welcome to the Networking Essentials Blog! Discover expert tutorials, guides, and tips on networking topics like subnetting, network testing, and router configuration. Perfect for IT professionals, network engineers, and CCNA/CCNP students.</p>
+            </section>
+
+            <!-- Inline Ad -->
+            <div class="ad-inline">
+                <div>📢 Advertisement Space - Inline Banner (468x60)</div>
             </div>
-            <div class="menu-item">
-                <h3><a href="/blogs/ios_commands.html">Top 10 Cisco IOS Commands Every Network Engineer Must Know</a></h3>
-                <p>Ready to take control of Cisco routers and switches? Whether you're studying for your CCNA, tackling the CCNP ENARSI exam, or managing a live network</p>
-                <p class="post-meta"><i class="far fa-calendar-alt"></i> June 6, 2025</p>
+
+            <section class="menu-grid fade-in">
+                <article class="menu-item">
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                        <i class="fas fa-network-wired" style="font-size: 2rem; color: var(--primary-color);"></i>
+                        <div style="flex: 1;">
+                            <div style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 0.25rem;">
+                                <i class="far fa-calendar-alt"></i> June 2, 2025
+                            </div>
+                            <h3><a href="/blogs/subnetting_guide.html" style="text-decoration: none; color: var(--text-primary);">Understanding Subnetting in 5 Easy Steps</a></h3>
+                        </div>
+                    </div>
+                    <p>Learn how to divide networks into smaller subnets with this beginner-friendly guide. Master IP addressing and subnet masks with practical examples and real-world scenarios.</p>
+                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem;">
+                        <span style="background: var(--primary-color); color: white; padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.75rem;">Subnetting</span>
+                        <span style="background: var(--accent-color); color: white; padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.75rem;">CCNA</span>
+                        <span style="background: var(--success-color); color: white; padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.75rem;">Beginner</span>
+                    </div>
+                    <a href="/blogs/subnetting_guide.html" class="btn btn-primary">Read Article <i class="fas fa-arrow-right"></i></a>
+                </article>
+
+                <article class="menu-item">
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                        <i class="fas fa-terminal" style="font-size: 2rem; color: var(--accent-color);"></i>
+                        <div style="flex: 1;">
+                            <div style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 0.25rem;">
+                                <i class="far fa-calendar-alt"></i> June 6, 2025
+                            </div>
+                            <h3><a href="/blogs/ios_commands.html" style="text-decoration: none; color: var(--text-primary);">Top 10 Cisco IOS Commands Every Network Engineer Must Know</a></h3>
+                        </div>
+                    </div>
+                    <p>Ready to take control of Cisco routers and switches? Whether you're studying for your CCNA, tackling the CCNP ENARSI exam, or managing a live network, these commands are essential.</p>
+                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem;">
+                        <span style="background: var(--secondary-color); color: white; padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.75rem;">Cisco IOS</span>
+                        <span style="background: var(--info-color); color: white; padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.75rem;">Commands</span>
+                        <span style="background: var(--warning-color); color: white; padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.75rem;">CCNP</span>
+                    </div>
+                    <a href="/blogs/ios_commands.html" class="btn btn-primary">Read Article <i class="fas fa-arrow-right"></i></a>
+                </article>
+
+                <article class="menu-item">
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                        <i class="fas fa-cogs" style="font-size: 2rem; color: var(--success-color);"></i>
+                        <div style="flex: 1;">
+                            <div style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 0.25rem;">
+                                <i class="far fa-calendar-alt"></i> May 15, 2025
+                            </div>
+                            <h3><a href="/blogs/router_configuration.html" style="text-decoration: none; color: var(--text-primary);">Router Configuration Basics</a></h3>
+                        </div>
+                    </div>
+                    <p>Get started with configuring Cisco routers for small networks with practical CLI commands and examples. Perfect for beginners and certification students.</p>
+                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem;">
+                        <span style="background: var(--primary-color); color: white; padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.75rem;">Configuration</span>
+                        <span style="background: var(--success-color); color: white; padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.75rem;">Beginner</span>
+                    </div>
+                    <a href="/blogs/router_configuration.html" class="btn btn-primary">Read Article <i class="fas fa-arrow-right"></i></a>
+                </article>
+
+                <article class="menu-item">
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                        <i class="fas fa-laptop-code" style="font-size: 2rem; color: var(--info-color);"></i>
+                        <div style="flex: 1;">
+                            <div style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 0.25rem;">
+                                <i class="far fa-calendar-alt"></i> May 1, 2025
+                            </div>
+                            <h3><a href="/blogs/packet-tracer-guide.html" style="text-decoration: none; color: var(--text-primary);">Real-World Use Cases of Packet Tracer and GNS3</a></h3>
+                        </div>
+                    </div>
+                    <p>Explore how to use Packet Tracer and GNS3 for network simulation and training in this detailed guide. Learn practical applications and best practices.</p>
+                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem;">
+                        <span style="background: var(--warning-color); color: white; padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.75rem;">Simulation</span>
+                        <span style="background: var(--info-color); color: white; padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.75rem;">Tools</span>
+                    </div>
+                    <a href="/blogs/packet-tracer-guide.html" class="btn btn-primary">Read Article <i class="fas fa-arrow-right"></i></a>
+                </article>
+
+                <article class="menu-item">
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                        <i class="fas fa-exchange-alt" style="font-size: 2rem; color: var(--secondary-color);"></i>
+                        <div style="flex: 1;">
+                            <div style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 0.25rem;">
+                                <i class="far fa-calendar-alt"></i> April 20, 2025
+                            </div>
+                            <h3><a href="/blogs/ipvsmac.html" style="text-decoration: none; color: var(--text-primary);">IP Address vs MAC Address: What's the Difference?</a></h3>
+                        </div>
+                    </div>
+                    <p>IP address helps identify your device on a network logically, while MAC address is a physical hardware ID unique to your network interface. Learn the key differences.</p>
+                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem;">
+                        <span style="background: var(--primary-color); color: white; padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.75rem;">Fundamentals</span>
+                        <span style="background: var(--success-color); color: white; padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.75rem;">Beginner</span>
+                    </div>
+                    <a href="/blogs/ipvsmac.html" class="btn btn-primary">Read Article <i class="fas fa-arrow-right"></i></a>
+                </article>
+            </section>
+
+            <!-- Another Inline Ad -->
+            <div class="ad-inline">
+                <div>📢 Advertisement Space - Content Banner (728x90)</div>
             </div>
-            <div class="menu-item">
-                <h3><a href="/blogs/router_configuration.html">Router Configuration Basics</a></h3>
-                <p>Get started with configuring Cisco routers for small networks with practical CLI commands and examples.</p>
-                <p class="post-meta"><i class="far fa-calendar-alt"></i> May 15, 2025</p>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <button class="btn btn-secondary">
+                    <i class="fas fa-plus"></i>
+                    Load More Posts
+                </button>
             </div>
-            <div class="menu-item">
-                <h3><a href="/blogs/packet-tracer-guide.html">Real-World Use Cases of Packet Tracer and GNS3</a></h3>
-                <p>Explore how to use Packet Tracer and GNS3 for network simulation and training in this detailed guide.</p>
-                <p class="post-meta"><i class="far fa-calendar-alt"></i> May 1, 2025</p>
+        </main>
+
+        <aside class="sidebar">
+            <!-- Sidebar Ad -->
+            <div class="ad-sidebar">
+                <div>📢 Advertisement Space<br>Sidebar Banner<br>(300x250)</div>
             </div>
-            <div class="menu-item">
-                <h3><a href="/blogs/ipvsmac.html">IP Address vs MAC Address: What's the Difference?</a></h3>
-                <p>IP address helps identify your device on a network logically, while MAC address is a physical hardware ID unique to your network interface.</p>
-                <p class="post-meta"><i class="far fa-calendar-alt"></i> April 20, 2025</p>
+
+            <div class="content-card">
+                <h3>📚 Categories</h3>
+                <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                    <a href="#" style="display: flex; justify-content: space-between; align-items: center; text-decoration: none; color: var(--text-secondary); padding: 0.75rem; background: var(--bg-secondary); border-radius: 0.5rem; transition: all 0.3s ease;">
+                        <span style="color: var(--text-primary); font-weight: 500;">Routing Protocols</span>
+                        <span style="background: var(--primary-color); color: white; padding: 0.25rem 0.5rem; border-radius: 0.75rem; font-size: 0.75rem;">12</span>
+                    </a>
+                    <a href="#" style="display: flex; justify-content: space-between; align-items: center; text-decoration: none; color: var(--text-secondary); padding: 0.75rem; background: var(--bg-secondary); border-radius: 0.5rem; transition: all 0.3s ease;">
+                        <span style="color: var(--text-primary); font-weight: 500;">Network Security</span>
+                        <span style="background: var(--accent-color); color: white; padding: 0.25rem 0.5rem; border-radius: 0.75rem; font-size: 0.75rem;">8</span>
+                    </a>
+                    <a href="#" style="display: flex; justify-content: space-between; align-items: center; text-decoration: none; color: var(--text-secondary); padding: 0.75rem; background: var(--bg-secondary); border-radius: 0.5rem; transition: all 0.3s ease;">
+                        <span style="color: var(--text-primary); font-weight: 500;">Cisco Configuration</span>
+                        <span style="background: var(--success-color); color: white; padding: 0.25rem 0.5rem; border-radius: 0.75rem; font-size: 0.75rem;">15</span>
+                    </a>
+                    <a href="#" style="display: flex; justify-content: space-between; align-items: center; text-decoration: none; color: var(--text-secondary); padding: 0.75rem; background: var(--bg-secondary); border-radius: 0.5rem; transition: all 0.3s ease;">
+                        <span style="color: var(--text-primary); font-weight: 500;">Troubleshooting</span>
+                        <span style="background: var(--warning-color); color: white; padding: 0.25rem 0.5rem; border-radius: 0.75rem; font-size: 0.75rem;">6</span>
+                    </a>
+                </div>
             </div>
-        </section>
-        <div style="text-align:center; margin-top:2rem;">
-            <button class="btn-primary">Load More Posts</button>
-        </div>
-    </main>
+
+            <div class="content-card">
+                <h3>🔥 Trending Topics</h3>
+                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                    <span style="background: var(--primary-color); color: white; padding: 0.5rem 1rem; border-radius: 1rem; font-size: 0.875rem; cursor: pointer; transition: all 0.3s ease;">#CCNA</span>
+                    <span style="background: var(--accent-color); color: white; padding: 0.5rem 1rem; border-radius: 1rem; font-size: 0.875rem; cursor: pointer; transition: all 0.3s ease;">#Subnetting</span>
+                    <span style="background: var(--success-color); color: white; padding: 0.5rem 1rem; border-radius: 1rem; font-size: 0.875rem; cursor: pointer; transition: all 0.3s ease;">#OSPF</span>
+                    <span style="background: var(--info-color); color: white; padding: 0.5rem 1rem; border-radius: 1rem; font-size: 0.875rem; cursor: pointer; transition: all 0.3s ease;">#BGP</span>
+                    <span style="background: var(--warning-color); color: white; padding: 0.5rem 1rem; border-radius: 1rem; font-size: 0.875rem; cursor: pointer; transition: all 0.3s ease;">#Security</span>
+                    <span style="background: var(--secondary-color); color: white; padding: 0.5rem 1rem; border-radius: 1rem; font-size: 0.875rem; cursor: pointer; transition: all 0.3s ease;">#IPv6</span>
+                </div>
+            </div>
+
+            <!-- Another Sidebar Ad -->
+            <div class="ad-sidebar">
+                <div>📢 Advertisement Space<br>Sidebar Banner<br>(300x600)</div>
+            </div>
+        </aside>
+    </div>
 
     <footer class="footer">
-        <div class="footer-content">&copy; 2025 Networking Essentials. All rights reserved.</div>
+        <div class="footer-content">
+            <p>&copy; 2025 Networking Essentials. All rights reserved. | Empowering network professionals worldwide</p>
+        </div>
     </footer>
+
+    <script src="theme.js"></script>
 </body>
 </html>
