@@ -8,150 +8,227 @@
     <meta name="author" content="Networking Essentials">
     <title>Cisco IOS Commands Cheat Sheet | Networking Essentials</title>
     <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
- <header id="header"></header>
+    <header class="header">
+        <div class="header-container">
+            <a href="/" class="logo">Networking Essentials</a>
+            <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="/index.html" class="nav-link">Home</a></li>
+                    <li><a href="/blogs.html" class="nav-link active">Blogs</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link dropdown-toggle">Tools</a>
+                        <ul class="dropdown-content">
+                            <li><a href="/tests.html" class="dropdown-link">Tests</a></li>
+                            <li><a href="/ascalc.html" class="dropdown-link">AS Calculator</a></li>
+                            <li><a href="/ip_address.html" class="dropdown-link">IP Calculator</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link dropdown-toggle">Labs</a>
+                        <ul class="dropdown-content">
+                            <li><a href="/labs/eigrp.html" class="dropdown-link">EIGRP</a></li>
+                            <li><a href="/labs/ospf.html" class="dropdown-link">OSPF</a></li>
+                            <li><a href="/labs/rip.html" class="dropdown-link">RIP</a></li>
+                            <li><a href="/labs/bgp.html" class="dropdown-link">BGP</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
 
-    <main>
-        <div class="content">
-            <h1>Top 10 Cisco IOS Commands Every Network Engineer Must Know</h1>
-            <p>Whether you're studying for your CCNA, preparing for the CCNP ENARSI exam, or managing real-world networks, mastering Cisco IOS commands is a must. These commands help you configure, monitor, and troubleshoot Cisco devices like routers and switches. In this guide, we’ll walk through the top 10 Cisco IOS commands every network engineer should know, complete with practical examples and tips to make your networking journey smoother. Let’s dive in!</p>
+    <!-- Header Ad Banner -->
+    <div class="ad-banner">
+        <div class="ad-placeholder">
+            <i class="fas fa-ad"></i>
+            <span>Advertisement Space - Header Banner (728x90)</span>
+        </div>
+    </div>
 
-            <h2>1. show running-config</h2>
-            <p>The <code>show running-config</code> command is your go-to for viewing the active configuration of a Cisco device. It displays everything from interface settings to routing protocols currently running. This is especially useful when you’re troubleshooting or auditing a network.</p>
-            <p><strong>Use Case:</strong> Imagine you’ve inherited a network and need to understand how a router is configured. Running this command gives you a snapshot of the current setup.</p>
-            <pre>
-Router# show running-config
+    <div class="main-container">
+        <main class="main-content">
+            <article class="blog-article">
+                <header class="article-header">
+                    <div class="article-meta">
+                        <a href="/blogs.html" class="back-link">
+                            <i class="fas fa-arrow-left"></i> Back to Blogs
+                        </a>
+                        <time datetime="2025-06-06">June 6, 2025</time>
+                    </div>
+                    <h1>Top 10 Cisco IOS Commands Every Network Engineer Must Know</h1>
+                    <p class="article-excerpt">Whether you're studying for your CCNA, preparing for the CCNP ENARSI exam, or managing real-world networks, mastering Cisco IOS commands is a must. These commands help you configure, monitor, and troubleshoot Cisco devices like routers and switches.</p>
+                    <div class="article-tags">
+                        <span class="tag">Cisco IOS</span>
+                        <span class="tag">Commands</span>
+                        <span class="tag">CCNP</span>
+                    </div>
+                </header>
+
+                <div class="article-content">
+                    <h2>1. show running-config</h2>
+                    <p>The <code>show running-config</code> command is your go-to for viewing the active configuration of a Cisco device. It displays everything from interface settings to routing protocols currently running. This is especially useful when you're troubleshooting or auditing a network.</p>
+                    
+                    <div class="code-example">
+                        <h4>Example Output:</h4>
+                        <pre><code>Router# show running-config
 Building configuration...
 Current configuration : 1234 bytes
 !
 hostname Router
 interface GigabitEthernet0/0
  ip address 192.168.1.1 255.255.255.0
-!
-            </pre>
-            <p><strong>Tip:</strong> Use <code>show running-config | section interface</code> to filter and display only interface configurations, saving time on large configs.</p>
+!</code></pre>
+                    </div>
+                    
+                    <div class="tip-box">
+                        <i class="fas fa-lightbulb"></i>
+                        <p><strong>Tip:</strong> Use <code>show running-config | section interface</code> to filter and display only interface configurations, saving time on large configs.</p>
+                    </div>
 
-            <h2>2. show ip interface brief</h2>
-            <p>This command provides a quick summary of all interfaces, showing their IP addresses, status, and protocol state. It’s a lifesaver for checking if interfaces are up or down without digging through detailed output.</p>
-            <p><strong>Use Case:</strong> You’re troubleshooting connectivity issues and want to verify that all interfaces are operational.</p>
-            <pre>
-Router# show ip interface brief
+                    <!-- Inline Ad -->
+                    <div class="ad-inline">
+                        <div class="ad-placeholder">
+                            <i class="fas fa-ad"></i>
+                            <span>Advertisement Space - Inline Banner (468x60)</span>
+                        </div>
+                    </div>
+
+                    <h2>2. show ip interface brief</h2>
+                    <p>This command provides a quick summary of all interfaces, showing their IP addresses, status, and protocol state. It's a lifesaver for checking if interfaces are up or down without digging through detailed output.</p>
+                    
+                    <div class="code-example">
+                        <h4>Example Output:</h4>
+                        <pre><code>Router# show ip interface brief
 Interface              IP-Address      OK? Method Status                Protocol
 GigabitEthernet0/0     192.168.1.1     YES manual up                    up
-GigabitEthernet0/1     unassigned      YES unset  administratively down down
-            </pre>
-            <p><strong>Tip:</strong> Look for “down” in the Status or Protocol columns to spot issues like unplugged cables or misconfigurations.</p>
+GigabitEthernet0/1     unassigned      YES unset  administratively down down</code></pre>
+                    </div>
 
-            <h2>3. configure terminal</h2>
-            <p>The <code>configure terminal</code> command (often shortened to <code>conf t</code>) takes you to global configuration mode, where you can make changes to the device’s settings, like setting IP addresses or enabling routing protocols.</p>
-            <p><strong>Use Case:</strong> You need to configure a new VLAN or change an interface’s IP address.</p>
-            <pre>
-Router> enable
+                    <h2>3. configure terminal</h2>
+                    <p>The <code>configure terminal</code> command (often shortened to <code>conf t</code>) takes you to global configuration mode, where you can make changes to the device's settings, like setting IP addresses or enabling routing protocols.</p>
+                    
+                    <div class="code-example">
+                        <h4>Example Usage:</h4>
+                        <pre><code>Router> enable
 Router# configure terminal
 Enter configuration commands, one per line. End with CNTL/Z.
 Router(config)# interface GigabitEthernet0/0
-Router(config-if)# ip address 192.168.2.1 255.255.255.0
-            </pre>
-            <p><strong>Tip:</strong> Always save your changes with <code>write memory</code> to ensure they persist after a reboot.</p>
+Router(config-if)# ip address 192.168.2.1 255.255.255.0</code></pre>
+                    </div>
 
-            <h2>4. show ip route</h2>
-            <p>This command displays the routing table, showing how the device forwards packets. It’s critical for verifying routing protocols like OSPF or EIGRP and checking for correct routes.</p>
-            <p><strong>Use Case:</strong> You’re troubleshooting why a remote network isn’t reachable and need to check if the route exists.</p>
-            <pre>
-Router# show ip route
+                    <h2>4. show ip route</h2>
+                    <p>This command displays the routing table, showing how the device forwards packets. It's critical for verifying routing protocols like OSPF or EIGRP and checking for correct routes.</p>
+                    
+                    <div class="code-example">
+                        <h4>Example Output:</h4>
+                        <pre><code>Router# show ip route
 Codes: C - connected, S - static, R - RIP, O - OSPF...
 Gateway of last resort is not set
 C    192.168.1.0/24 is directly connected, GigabitEthernet0/0
-O    10.0.0.0/8 [110/2] via 192.168.1.2, 00:01:23, GigabitEthernet0/0
-            </pre>
-            <p><strong>Tip:</strong> Use <code>show ip route | include 192.168</code> to filter routes for a specific network.</p>
+O    10.0.0.0/8 [110/2] via 192.168.1.2, 00:01:23, GigabitEthernet0/0</code></pre>
+                    </div>
 
-            <h2>5. ping</h2>
-            <p>The <code>ping</code> command tests connectivity between devices by sending ICMP echo requests. It’s one of the first tools you’ll use to diagnose network issues.</p>
-            <p><strong>Use Case:</strong> You want to confirm if a remote server at 192.168.1.100 is reachable from your router.</p>
-            <pre>
-Router# ping 192.168.1.100
+                    <h2>5. ping</h2>
+                    <p>The <code>ping</code> command tests connectivity between devices by sending ICMP echo requests. It's one of the first tools you'll use to diagnose network issues.</p>
+                    
+                    <div class="code-example">
+                        <h4>Example Usage:</h4>
+                        <pre><code>Router# ping 192.168.1.100
 Type escape sequence to abort.
 Sending 5, 100-byte ICMP Echos to 192.168.1.100, timeout is 2 seconds:
 !!!!!
-Success rate is 100 percent (5/5), round-trip min/avg/max = 1/2/4 ms
-            </pre>
-            <p><strong>Tip:</strong> Use extended ping (<code>ping</code> with Enter to specify source interfaces) for advanced troubleshooting.</p>
+Success rate is 100 percent (5/5), round-trip min/avg/max = 1/2/4 ms</code></pre>
+                    </div>
 
-            <h2>6. traceroute</h2>
-            <p>The <code>traceroute</code> command traces the path packets take to a destination, showing each hop. It’s great for pinpointing where connectivity breaks down.</p>
-            <p><strong>Use Case:</strong> A user reports they can’t reach a website, and you need to identify the failing hop.</p>
-            <pre>
-Router# traceroute 8.8.8.8
-Type escape sequence to abort.
-Tracing the route to 8.8.8.8
-  1 192.168.1.2 4 msec 4 msec 4 msec
-  2 10.0.0.1 8 msec 8 msec 8 msec
-            </pre>
-            <p><strong>Tip:</strong> Asterisks (*) in the output indicate packet loss or a firewall blocking the probe.</p>
+                    <h2>6. traceroute</h2>
+                    <p>The <code>traceroute</code> command traces the path packets take to a destination, showing each hop. It's great for pinpointing where connectivity breaks down.</p>
 
-            <h2>7. ip address</h2>
-            <p>The <code>ip address</code> command assigns an IP address and subnet mask to an interface. It’s fundamental for setting up network connectivity.</p>
-            <p><strong>Use Case:</strong> You’re configuring a new interface to connect a branch office network.</p>
-            <pre>
-Router(config)# interface GigabitEthernet0/1
-Router(config-if)# ip address 192.168.3.1 255.255.255.0
-Router(config-if)# no shutdown
-            </pre>
-            <p><strong>Tip:</strong> Always use <code>no shutdown</code> to enable the interface after setting the IP address.</p>
+                    <h2>7. ip address</h2>
+                    <p>The <code>ip address</code> command assigns an IP address and subnet mask to an interface. It's fundamental for setting up network connectivity.</p>
 
-            <h2>8. show vlan brief</h2>
-            <p>On Cisco switches, <code>show vlan brief</code> lists all VLANs, their status, and associated ports. It’s essential for verifying VLAN configurations.</p>
-            <p><strong>Use Case:</strong> You’re setting up VLANs for a small office and need to confirm ports are in the correct VLAN.</p>
-            <pre>
-Switch# show vlan brief
-VLAN Name                             Status    Ports
----- -------------------------------- --------- -------------------------------
-1    default                          active    Gi0/2, Gi0/3
-10   SALES                            active    Gi0/1
-20   ENGINEERING                      active    Gi0/4
-            </pre>
-            <p><strong>Tip:</strong> Check for “active” status to ensure the VLAN is operational.</p>
+                    <h2>8. show vlan brief</h2>
+                    <p>On Cisco switches, <code>show vlan brief</code> lists all VLANs, their status, and associated ports. It's essential for verifying VLAN configurations.</p>
 
-            <h2>9. access-list</h2>
-            <p>The <code>access-list</code> command creates Access Control Lists (ACLs) to filter traffic. It’s a key tool for network security and traffic control.</p>
-            <p><strong>Use Case:</strong> You want to block traffic from a specific subnet while allowing others.</p>
-            <pre>
-Router(config)# access-list 101 permit ip 192.168.1.0 0.0.0.255 any
-Router(config)# access-list 101 deny ip 192.168.2.0 0.0.0.255 any
-Router(config)# interface GigabitEthernet0/0
-Router(config-if)# ip access-group 101 in
-            </pre>
-            <p><strong>Tip:</strong> Always test ACLs in a lab (like Packet Tracer) before applying them to production networks.</p>
+                    <h2>9. access-list</h2>
+                    <p>The <code>access-list</code> command creates Access Control Lists (ACLs) to filter traffic. It's a key tool for network security and traffic control.</p>
 
-            <h2>10. write memory</h2>
-            <p>The <code>write memory</code> (or <code>wr</code>) command saves the running configuration to NVRAM, ensuring changes persist after a reboot.</p>
-            <p><strong>Use Case:</strong> You’ve configured a router and want to save your work.</p>
-            <pre>
-Router# write memory
-Building configuration...
-[OK]
-            </pre>
-            <p><strong>Tip:</strong> Use <code>show startup-config</code> to verify the saved configuration matches the running-config.</p>
+                    <h2>10. write memory</h2>
+                    <p>The <code>write memory</code> (or <code>wr</code>) command saves the running configuration to NVRAM, ensuring changes persist after a reboot.</p>
 
-            <h2>Practice These Commands</h2>
-            <p>These 10 commands are just the beginning, but they’re critical for any network engineer. Practice them in a lab environment using tools like Cisco Packet Tracer or GNS3 to build confidence. Ready to test your knowledge? Check out our <a href="#">Networking Quizzes</a> to see how well you know these commands, or explore our <a href="#">Labs</a> for hands-on practice with real-world scenarios.</p>
+                    <div class="conclusion-box">
+                        <h3>Practice These Commands</h3>
+                        <p>These 10 commands are just the beginning, but they're critical for any network engineer. Practice them in a lab environment using tools like Cisco Packet Tracer or GNS3 to build confidence.</p>
+                    </div>
+                </div>
 
-            <h2>Conclusion</h2>
-            <p>Mastering these Cisco IOS commands will set you up for success in CCNA, CCNP, and real-world networking tasks. From troubleshooting with <code>ping</code> and <code>traceroute</code> to securing networks with <code>access-list</code>, these commands are your toolkit for managing Cisco devices. Keep practicing, and you’ll be configuring and troubleshooting like a pro in no time!</p>
+                <footer class="article-footer">
+                    <div class="article-navigation">
+                        <a href="/blogs.html" class="nav-button">
+                            <i class="fas fa-arrow-left"></i>
+                            Back to All Blogs
+                        </a>
+                        <div class="article-share">
+                            <span>Share this article:</span>
+                            <a href="#" class="share-button"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="share-button"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="share-button"><i class="fab fa-facebook"></i></a>
+                        </div>
+                    </div>
+                </footer>
+            </article>
+        </main>
+
+        <aside class="sidebar">
+            <!-- Sidebar Ad -->
+            <div class="ad-sidebar">
+                <div class="ad-placeholder">
+                    <i class="fas fa-ad"></i>
+                    <span>Advertisement Space<br>Sidebar Banner<br>(300x250)</span>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3>📚 Related Articles</h3>
+                <div class="related-articles">
+                    <a href="/blogs/subnetting_guide.html" class="related-article">
+                        <h4>Understanding Subnetting</h4>
+                        <p>Learn subnetting in 5 easy steps</p>
+                    </a>
+                    <a href="/blogs/router_configuration.html" class="related-article">
+                        <h4>Router Configuration Basics</h4>
+                        <p>Get started with configuring Cisco routers</p>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Another Sidebar Ad -->
+            <div class="ad-sidebar">
+                <div class="ad-placeholder">
+                    <i class="fas fa-ad"></i>
+                    <span>Advertisement Space<br>Sidebar Banner<br>(300x600)</span>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Networking Essentials. All rights reserved. | Empowering network professionals worldwide</p>
         </div>
-    </main>
-
-    <footer>
-        <p>© 2025 Networking Essentials. All rights reserved.</p>
     </footer>
-        <script>
-        fetch('../header.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('header').innerHTML = data;
-            });
-    </script>
+
+    <script src="../theme.js"></script>
 </body>
 </html>
