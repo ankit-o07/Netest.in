@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn subnetting in 5 easy steps with this comprehensive guide. Understand IP addresses, subnet masks, and network segmentation for network engineers and IT professionals.">
+    <meta name="keywords" content="subnetting, networking, IP addresses, subnet mask, network segmentation, IT guide, CCNA, CCNP">
+    <meta name="author" content="Networking Essentials">
+    <title>Understanding Subnetting in 5 Easy Steps | Networking Essentials</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Light Mode Colors */
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --primary-color: #667eea;
+            --primary-hover: #5a6fd8;
+            --secondary-color: #764ba2;
+            --accent-color: #ff6b6b;
+            --accent-hover: #ff5252;
+            
+            --text-primary: #1a202c;
+            --text-secondary: #4a5568;
+            --text-muted: #718096;
+            
+            --bg-primary: #ffffff;
+            --bg-secondary: #f7fafc;
+            --bg-tertiary: #edf2f7;
+            --bg-card: #ffffff;
+            --bg-overlay: rgba(255, 255, 255, 0.95);
+            
+            --border-color: #e2e8f0;
+            --border-hover: #cbd5e0;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+            --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.1);
+            
+            --success-color: #48bb78;
+            --warning-color: #ed8936;
+            --error-color: #f56565;
+            --info-color: #4299e1;
+            
+            --ad-bg: #f8f9fa;
+            --ad-border: #e9ecef;
+            --ad-text: #6c757d;
+        }
+
+        [data-theme='dark'] {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --primary-color: #7c3aed;
+            --primary-hover: #8b5cf6;
+            --secondary-color: #a855f7;
+            --accent-color: #f59e0b;
+            --accent-hover: #fbbf24;
+            
+            --text-primary: #f7fafc;
+            --text-secondary: #525252;
+            --text-muted: #a0aec0;
+            
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-tertiary: #334155;
+            --bg-card: #1e293b;
+            --bg-overlay: rgba(15, 23, 42, 0.95);
+            
+            --border-color: #334155;
+            --border-hover: #475569;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.3);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.4);
+            --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.3);
+            
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --error-color: #ef4444;
+            --info-color: #3b82f6;
+            
+            --ad-bg: #1e293b;
+            --ad-border: #334155;
+            --ad-text: #94a3b8;
+            
+            /* Dark mode specific overrides */
+            --nav-text-color: #e2e8f0;
+            --date-text-color: #a0aec0;
+            --related-text-color: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            line-height: 1.2;
+            color: var(--text-primary);
+        }
+
+        .navbar {
+            background: var(--bg-overlay) !important;
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .navbar .container-fluid {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            gap: 2rem;
+        }
+
+        .navbar-brand {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .navbar-brand:hover {
+            transform: scale(1.05);
+        }
+
+        .navbar-nav {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-left: auto;
+        }
+
+        .navbar-nav .nav-link {
+            color: var(--nav-text-color, var(--text-secondary));
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 0.75rem 1rem;
+            border-radius: 0.75rem;
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+        }
+
+        .navbar-nav .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: var(--primary-gradient);
+            transition: width 0.3s ease;
+            z-index: -1;
+            border-radius: 0.75rem;
+        }
+
+        .navbar-nav .nav-link:hover::before,
+        .navbar-nav .nav-link.active::before {
+            width: 100%;
+        }
+
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link.active {
+            color: white !important;
+            transform: translateY(-2px);
+        }
+
+        .dropdown-menu {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            box-shadow: var(--shadow-xl);
+            padding: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .dropdown-item {
+            padding: 0.75rem 1rem;
+            color: var(--nav-text-color, var(--text-secondary));
+            font-weight: 500;
+            border-radius: 0.5rem;
+            transition: all 0.2s ease;
+            font-size: 0.9rem;
+        }
+
+        .dropdown-item:hover,
+        .dropdown-item.active {
+            background: var(--primary-gradient);
+            color: white;
+            transform: translateX(4px);
+        }
+
+        .theme-toggle {
+            background: var(--bg-tertiary);
+            border: 2px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 0.75rem;
+            font-size: 1.25rem;
+            border-radius: 1rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .theme-toggle::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: var(--primary-gradient);
+            transition: width 0.3s ease;
+            z-index: -1;
+        }
+
+        .theme-toggle:hover::before {
+            width: 100%;
+        }
+
+        .theme-toggle:hover {
+            color: white;
+            border-color: transparent;
+            transform: scale(1.1) rotate(15deg);
+        }
+
+        .ad-banner {
+            background: var(--ad-bg);
+            border: 1px solid var(--ad-border);
+            border-radius: 0.75rem;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            text-align: center;
+            color: var(--ad-text);
+            font-size: 0.875rem;
+            min-height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gradient-text {
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 1.5rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: var(--shadow-md);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--primary-gradient);
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--primary-color);
+        }
+
+        .btn-primary {
+            background: var(--primary-gradient);
+            border: none;
+            border-radius: 0.75rem;
+            padding: 0.875rem 1.75rem;
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .table {
+            background: var(--bg-card);
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+
+        .table th {
+            background: var(--primary-gradient);
+            color: white;
+            font-weight: 600;
+            border: none;
+        }
+
+        .table td {
+            border-color: var(--border-color);
+            color: var(--text-secondary);
+        }
+
+        .code-block {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .code-block h4 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .code-block pre {
+            background: var(--bg-primary);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            color: var(--text-primary);
+        }
+
+        .subnet-calculation {
+            background: var(--bg-secondary);
+            padding: 2rem;
+            border-radius: 1rem;
+            margin: 2rem 0;
+            border-left: 4px solid var(--info-color);
+        }
+
+        .subnet-item {
+            background: var(--bg-card);
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            border: 1px solid var(--border-color);
+            margin-bottom: 1rem;
+        }
+
+        .subnet-item h5 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .tip-item {
+            background: var(--bg-card);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            border: 1px solid var(--border-color);
+            text-align: center;
+            transition: all 0.3s ease;
+            margin-bottom: 1rem;
+        }
+
+        .tip-item:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .tip-item i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .faq-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .faq-item h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .related-article {
+            display: block;
+            background: var(--bg-secondary);
+            padding: 1rem;
+            border-radius: 0.75rem;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+            margin-bottom: 1rem;
+        }
+
+        .related-article:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateX(4px);
+        }
+
+        .related-article p {
+            font-size: 0.875rem;
+            margin: 0;
+            opacity: 0.8;
+            color: var(--related-text-color, var(--text-secondary));
+        }
+
+        .footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+            padding: 3rem 0 2rem;
+            margin-top: 4rem;
+            text-align: center;
+            color: var(--text-muted);
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            background: var(--bg-secondary);
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateX(-4px);
+        }
+
+        .tag {
+            background: var(--primary-gradient);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 1.5rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-right: 0.5rem;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+        }
+
+        .share-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin-right: 0.5rem;
+        }
+
+        .share-button:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .nav-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--primary-gradient);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 991.98px) {
+            .navbar .container-fluid {
+                gap: 1rem;
+            }
+            
+            .navbar-collapse {
+                background: var(--bg-overlay);
+                backdrop-filter: blur(20px);
+                border-top: 1px solid var(--border-color);
+                margin-top: 1rem;
+                padding: 1rem;
+                border-radius: 1rem;
+            }
+            
+            .dropdown-menu {
+                position: static;
+                transform: none;
+                box-shadow: none;
+                border: none;
+                background: var(--bg-tertiary);
+                margin-left: 1rem;
+                border-radius: 0.5rem;
+                margin-top: 0.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar-collapse {
+                background: var(--bg-overlay);
+                backdrop-filter: blur(20px);
+                border-top: 1px solid var(--border-color);
+                margin-top: 1rem;
+                padding: 1rem;
+                border-radius: 1rem;
+            }
+
+            .dropdown-menu {
+                position: static;
+                transform: none;
+                box-shadow: none;
+                border: none;
+                background: var(--bg-tertiary);
+                margin-left: 1rem;
+                border-radius: 0.5rem;
+                margin-top: 0.5rem;
+            }
+
+            .article-meta {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .article-navigation {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .article-share {
+                justify-content: center;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .fade-in:nth-child(2) { animation-delay: 0.1s; }
+        .fade-in:nth-child(3) { animation-delay: 0.2s; }
+        .fade-in:nth-child(4) { animation-delay: 0.3s; }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="/">Networking Essentials</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="../blogs.html">Blogs</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Tools
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#tests">Tests</a></li>
+                            <li><a class="dropdown-item" href="#calculator">AS Calculator</a></li>
+                            <li><a class="dropdown-item" href="../ip_address.html">IP Calculator</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Labs
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/blogsPub/EIGRP.html">EIGRP</a></li>
+                            <li><a class="dropdown-item" href="/blogsPub/OSPF.html">OSPF</a></li>
+                            <li><a class="dropdown-item" href="/blogsPub/RIP.html">RIP</a></li>
+                            <li><a class="dropdown-item" href="/blogsPub/BGP.html">BGP</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Ad Banner -->
+    <div class="container-fluid">
+        <div class="ad-banner">
+            <i class="fas fa-ad"></i>
+            <span>Advertisement Space - Header Banner (728x90)</span>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Main Article Content -->
+            <div class="col-lg-9">
+                <div class="p-4">
+                    <article class="blog-article">
+                        <header class="mb-5 pb-4 border-bottom">
+                            <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
+                                <a href="#blogs" class="back-link">
+                                    <i class="fas fa-arrow-left"></i> Back to Blogs
+                                </a>
+                                <time datetime="2025-06-02" class="text-muted">June 2, 2025</time>
+                            </div>
+                            <h1 class="gradient-text mb-3">Understanding Subnetting in 5 Easy Steps</h1>
+                            <p class="lead mb-4">Subnetting is a cornerstone of networking, enabling efficient IP address management and enhanced network security. For network engineers, IT professionals, or students preparing for certifications like CCNA or CCNP, mastering subnetting is essential.</p>
+                            <div class="mb-3">
+                                <span class="tag">Subnetting</span>
+                                <span class="tag">CCNA</span>
+                                <span class="tag">Beginner</span>
+                            </div>
+                        </header>
+
+                        <div class="article-content">
+                            <div class="card mb-4">
+                                <div class="card-body">
+                                    <h3>Table of Contents</h3>
+                                    <ul class="list-unstyled">
+                                        <li><a href="#step1" class="text-decoration-none">Step 1: Grasp the Basics of IP Addresses</a></li>
+                                        <li><a href="#step2" class="text-decoration-none">Step 2: Understand the Subnet Mask</a></li>
+                                        <li><a href="#step3" class="text-decoration-none">Step 3: Determine Subnet and Host Requirements</a></li>
+                                        <li><a href="#step4" class="text-decoration-none">Step 4: Perform Subnet Calculations</a></li>
+                                        <li><a href="#step5" class="text-decoration-none">Step 5: Implement Subnetting in Practice</a></li>
+                                        <li><a href="#tips" class="text-decoration-none">Tips for Mastering Subnetting</a></li>
+                                        <li><a href="#faq" class="text-decoration-none">Frequently Asked Questions</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Inline Ad -->
+                            <div class="ad-banner">
+                                <i class="fas fa-ad"></i>
+                                <span>Advertisement Space - Inline Banner (468x60)</span>
+                            </div>
+
+                            <section id="step1" class="mb-5">
+                                <h3 class="gradient-text mb-3">Step 1: Grasp the Basics of IP Addresses</h3>
+                                <p>An IP address is like a digital mailing address, uniquely identifying devices on a network. IPv4, the most common version, uses a 32-bit address written as four octets separated by dots (e.g., 192.168.1.10). Each octet ranges from 0 to 255, representing 8 bits. The address splits into two parts:</p>
+                                <ul>
+                                    <li><strong>Network Portion:</strong> Identifies the network a device belongs to.</li>
+                                    <li><strong>Host Portion:</strong> Specifies the individual device within that network.</li>
+                                </ul>
+                                <p>For example, in 192.168.1.10 with a subnet mask of 255.255.255.0 (/24), the first three octets (192.168.1) denote the network, and the last octet (10) identifies the host. Understanding this structure is crucial before diving into subnetting.</p>
+                            </section>
+
+                            <section id="step2" class="mb-5">
+                                <h3 class="gradient-text mb-3">Step 2: Understand the Subnet Mask</h3>
+                                <p>The subnet mask defines which part of an IP address is the network portion and which is the host portion. It's expressed in dotted-decimal (e.g., 255.255.255.0) or CIDR notation (e.g., /24, indicating 24 network bits). In binary, a subnet mask uses 1s for network bits and 0s for host bits.</p>
+                                
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Subnet Mask</th>
+                                                <th>CIDR</th>
+                                                <th>Total Addresses</th>
+                                                <th>Use Case</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>255.0.0.0</td>
+                                                <td>/8</td>
+                                                <td>16,777,216</td>
+                                                <td>Large enterprise networks</td>
+                                            </tr>
+                                            <tr>
+                                                <td>255.255.0.0</td>
+                                                <td>/16</td>
+                                                <td>65,536</td>
+                                                <td>Medium-sized networks</td>
+                                            </tr>
+                                            <tr>
+                                                <td>255.255.255.0</td>
+                                                <td>/24</td>
+                                                <td>256</td>
+                                                <td>Small office networks</td>
+                                            </tr>
+                                            <tr>
+                                                <td>255.255.255.252</td>
+                                                <td>/30</td>
+                                                <td>4</td>
+                                                <td>Point-to-point links</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </section>
+
+                            <section id="step3" class="mb-5">
+                                <h3 class="gradient-text mb-3">Step 3: Determine Subnet and Host Requirements</h3>
+                                <p>Before subnetting, identify how many subnets and hosts per subnet your network needs. Each subnet requires two reserved addresses: one for the network itself and one for broadcasts. Thus, the usable host addresses are total addresses minus two.</p>
+                                
+                                <div class="code-block">
+                                    <h4>Example Calculation:</h4>
+                                    <p>For a 192.168.1.0/24 network (256 addresses), if you need four subnets:</p>
+                                    <ul>
+                                        <li>Each subnet gets: 256 ÷ 4 = 64 addresses</li>
+                                        <li>Usable hosts per subnet: 64 - 2 = 62 hosts</li>
+                                        <li>Bits to borrow: 2 bits (2² = 4 subnets)</li>
+                                        <li>New subnet mask: /26 (24 + 2 = 26 bits)</li>
+                                    </ul>
+                                </div>
+                            </section>
+
+                            <section id="step4" class="mb-5">
+                                <h3 class="gradient-text mb-3">Step 4: Perform Subnet Calculations</h3>
+                                <p>Let's subnet 192.168.1.0/24 into four subnets:</p>
+                                
+                                <div class="subnet-calculation">
+                                    <h4>Subnet Ranges:</h4>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="subnet-item">
+                                                <h5>Subnet 1</h5>
+                                                <p><strong>Range:</strong> 192.168.1.0–192.168.1.63</p>
+                                                <p><strong>Usable:</strong> 192.168.1.1–192.168.1.62</p>
+                                                <p><strong>Broadcast:</strong> 192.168.1.63</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="subnet-item">
+                                                <h5>Subnet 2</h5>
+                                                <p><strong>Range:</strong> 192.168.1.64–192.168.1.127</p>
+                                                <p><strong>Usable:</strong> 192.168.1.65–192.168.1.126</p>
+                                                <p><strong>Broadcast:</strong> 192.168.1.127</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="subnet-item">
+                                                <h5>Subnet 3</h5>
+                                                <p><strong>Range:</strong> 192.168.1.128–192.168.1.191</p>
+                                                <p><strong>Usable:</strong> 192.168.1.129–192.168.1.190</p>
+                                                <p><strong>Broadcast:</strong> 192.168.1.191</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="subnet-item">
+                                                <h5>Subnet 4</h5>
+                                                <p><strong>Range:</strong> 192.168.1.192–192.168.1.255</p>
+                                                <p><strong>Usable:</strong> 192.168.1.193–192.168.1.254</p>
+                                                <p><strong>Broadcast:</strong> 192.168.1.255</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section id="step5" class="mb-5">
+                                <h3 class="gradient-text mb-3">Step 5: Implement Subnetting in Practice</h3>
+                                <p>Subnetting has practical applications across various scenarios:</p>
+                                <ul>
+                                    <li><strong>Office Networks:</strong> Separate departments (e.g., HR, IT, Sales) into subnets to enhance security and reduce broadcast traffic.</li>
+                                    <li><strong>Data Centers:</strong> Allocate subnets for servers, storage, and management networks to optimize resource usage.</li>
+                                    <li><strong>Home Networks:</strong> Create a guest Wi-Fi subnet to isolate guest devices from your main network.</li>
+                                </ul>
+
+                                <div class="code-block">
+                                    <h4>Cisco Router Configuration Example:</h4>
+                                    <pre><code>interface FastEthernet0/0.1
+ encapsulation dot1Q 10
+ ip address 192.168.1.1 255.255.255.192</code></pre>
+                                </div>
+                            </section>
+
+                            <section id="tips" class="mb-5">
+                                <h3 class="gradient-text mb-3">Tips for Mastering Subnetting</h3>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="tip-item">
+                                            <i class="fas fa-lightbulb"></i>
+                                            <h4>Practice with Tools</h4>
+                                            <p>Use Cisco Packet Tracer or GNS3 to simulate subnetted networks.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="tip-item">
+                                            <i class="fas fa-memory"></i>
+                                            <h4>Memorize Key Masks</h4>
+                                            <p>Know common masks like /24 (255.255.255.0) and /30 (255.255.255.252).</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="tip-item">
+                                            <i class="fas fa-calculator"></i>
+                                            <h4>Learn Binary</h4>
+                                            <p>Practice converting octets to binary for manual calculations.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="tip-item">
+                                            <i class="fas fa-tools"></i>
+                                            <h4>Use Calculators</h4>
+                                            <p>Tools like subnet calculators can save time for complex networks.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section id="faq" class="mb-5">
+                                <h3 class="gradient-text mb-3">Frequently Asked Questions</h3>
+                                <div class="faq-item">
+                                    <h4>Why do we need subnetting?</h4>
+                                    <p>Subnetting organizes networks, reduces broadcast traffic, and enhances security by isolating segments.</p>
+                                </div>
+                                <div class="faq-item">
+                                    <h4>How does subnetting differ for IPv4 vs. IPv6?</h4>
+                                    <p>IPv4 subnetting involves 32-bit addresses and bit borrowing, while IPv6 uses 128-bit addresses with simpler subnetting due to abundant address space.</p>
+                                </div>
+                                <div class="faq-item">
+                                    <h4>Can I subnet without binary?</h4>
+                                    <p>Yes, using subnet calculators, but binary understanding is critical for certifications and troubleshooting.</p>
+                                </div>
+                            </section>
+                        </div>
+
+                        <footer class="mt-5 pt-4 border-top">
+                            <div class="d-flex justify-content-between align-items-center flex-wrap">
+                                <a href="#blogs" class="nav-button">
+                                    <i class="fas fa-arrow-left"></i>
+                                    Back to All Blogs
+                                </a>
+                                <div class="d-flex align-items-center">
+                                    <span class="me-3">Share this article:</span>
+                                    <a href="#" class="share-button"><i class="fab fa-twitter"></i></a>
+                                    <a href="#" class="share-button"><i class="fab fa-linkedin"></i></a>
+                                    <a href="#" class="share-button"><i class="fab fa-facebook"></i></a>
+                                </div>
+                            </div>
+                        </footer>
+                    </article>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-lg-3">
+                <div class="p-4">
+                    <!-- Sidebar Ad -->
+                    <div class="ad-banner">
+                        <i class="fas fa-ad"></i>
+                        <span>Advertisement Space<br>Sidebar Banner<br>(300x250)</span>
+                    </div>
+
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h3>📚 Related Articles</h3>
+                            <a href="/blogsPub/Top10CiscoIOSCommands.html" class="related-article">
+                                <h4>Top 10 Cisco IOS Commands</h4>
+                                <p>Essential commands every network engineer should know</p>
+                            </a>
+                            <a href="/blogsPub/RouterConfigurationBasics.html" class="related-article">
+                                <h4>Router Configuration Basics</h4>
+                                <p>Get started with configuring Cisco routers</p>
+                            </a>
+                            <a href="/blogsPub/IPAddressvsMACAddress.html" class="related-article">
+                                <h4>IP vs MAC Address</h4>
+                                <p>Understanding the key differences</p>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Another Sidebar Ad -->
+                    <div class="ad-banner">
+                        <i class="fas fa-ad"></i>
+                        <span>Advertisement Space<br>Sidebar Banner<br>(300x600)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Networking Essentials. All rights reserved. | Empowering network professionals worldwide</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Enhanced theme management and mobile navigation with smooth animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggle = document.getElementById('theme-toggle');
+            const body = document.body;
+
+            // Check for saved theme preference or default to system preference
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const defaultTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+
+            // Set initial theme
+            setTheme(defaultTheme);
+
+            // Theme toggle functionality with smooth transition
+            if (themeToggle) {
+                themeToggle.addEventListener('click', () => {
+                    const currentTheme = document.documentElement.getAttribute('data-theme');
+                    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                    
+                    // Add transition class for smooth theme change
+                    body.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+                    
+                    setTheme(newTheme);
+                    
+                    // Remove transition after animation completes
+                    setTimeout(() => {
+                        body.style.transition = '';
+                    }, 300);
+                });
+            }
+
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Enhanced intersection observer for animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all fade-in elements
+            document.querySelectorAll('.fade-in').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+                observer.observe(el);
+            });
+
+            // Add active state to current navigation link
+            setActiveNavLink();
+
+            // Listen for system theme changes
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+                if (!localStorage.getItem('theme')) {
+                    setTheme(e.matches ? 'dark' : 'light');
+                }
+            });
+
+            // Add loading animation completion
+            window.addEventListener('load', () => {
+                document.body.classList.add('loaded');
+            });
+
+            // Functions
+            function setTheme(theme) {
+                document.documentElement.setAttribute('data-theme', theme);
+                localStorage.setItem('theme', theme);
+                
+                // Update button icon with animation
+                if (themeToggle) {
+                    const icon = themeToggle.querySelector('i');
+                    if (icon) {
+                        // Add rotation animation
+                        icon.style.transform = 'rotate(180deg)';
+                        
+                        setTimeout(() => {
+                            if (theme === 'dark') {
+                                icon.classList.remove('fa-moon');
+                                icon.classList.add('fa-sun');
+                                themeToggle.setAttribute('aria-label', 'Switch to light mode');
+                            } else {
+                                icon.classList.remove('fa-sun');
+                                icon.classList.add('fa-moon');
+                                themeToggle.setAttribute('aria-label', 'Switch to dark mode');
+                            }
+                            
+                            // Reset rotation
+                            setTimeout(() => {
+                                icon.style.transform = 'rotate(0deg)';
+                            }, 150);
+                        }, 150);
+                    }
+                }
+            }
+
+            function setActiveNavLink() {
+                const currentPath = window.location.pathname;
+                const navLinks = document.querySelectorAll('.nav-link');
+                
+                navLinks.forEach(link => {
+                    const href = link.getAttribute('href');
+                    link.classList.remove('active');
+                    
+                    if (href && href.includes('blogs')) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+
+            // Add hover effects for cards
+            document.querySelectorAll('.card').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-8px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+
+            // Add click ripple effect for buttons
+            document.querySelectorAll('.btn').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    const ripple = document.createElement('span');
+                    const rect = this.getBoundingClientRect();
+                    const size = Math.max(rect.width, rect.height);
+                    const x = e.clientX - rect.left - size / 2;
+                    const y = e.clientY - rect.top - size / 2;
+                    
+                    ripple.style.cssText = `
+                        position: absolute;
+                        width: ${size}px;
+                        height: ${size}px;
+                        left: ${x}px;
+                        top: ${y}px;
+                        background: rgba(255, 255, 255, 0.3);
+                        border-radius: 50%;
+                        transform: scale(0);
+                        animation: ripple 0.6s ease-out;
+                        pointer-events: none;
+                    `;
+                    
+                    this.style.position = 'relative';
+                    this.style.overflow = 'hidden';
+                    this.appendChild(ripple);
+                    
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 600);
+                });
+            });
+
+            // Add CSS for ripple animation
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes ripple {
+                    to {
+                        transform: scale(2);
+                        opacity: 0;
+                    }
+                }
+                
+                .loaded .fade-in {
+                    opacity: 1 !important;
+                    transform: translateY(0) !important;
+                }
+            `;
+            document.head.appendChild(style);
+        });
+    </script>
+</body>
+</html>
